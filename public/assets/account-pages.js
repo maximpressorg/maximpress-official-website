@@ -128,11 +128,12 @@ async function authPage(){
  });
  const signProvider=async kind=>{
   const provider=kind==='google'?new a.GoogleAuthProvider():new a.OAuthProvider('apple.com');
+  if(kind==='google')provider.setCustomParameters({prompt:'select_account'});
   if(kind==='apple'){provider.addScope('email');provider.addScope('name')}
   display('account-status',`Connecting securely to ${kind==='google'?'Google':'Apple'}…`);
   try{const r=await a.signInWithPopup(auth,provider);await advance(r.user)}
   catch(err){
-   if(['auth/popup-blocked','auth/operation-not-supported-in-this-environment'].includes(err.code)){
+   if(['auth/popup-blocked','auth/operation-not-supported-in-this-environment','auth/internal-error'].includes(err.code)){
     try{await a.signInWithRedirect(auth,provider);return}catch(redirectErr){display('account-status',errorText(redirectErr),'error');return}
    }
    display('account-status',errorText(err),'error')
@@ -218,6 +219,7 @@ async function settingsPage(){
  });
  const linkProvider=async kind=>{
   const provider=kind==='google'?new a.GoogleAuthProvider():new a.OAuthProvider('apple.com');
+  if(kind==='google')provider.setCustomParameters({prompt:'select_account'});
   if(kind==='apple'){provider.addScope('email');provider.addScope('name')}
   try{await a.linkWithPopup(u,provider);const {db,fs}=await client();await fs.updateDoc(fs.doc(db,'customers',u.uid),{linkedProviders:providerIds(u)});$('mi-auth-methods').textContent=providerIds(u).join(', ');display('account-status','Sign-in method linked securely to your existing account.','success')}
   catch(err){display('account-status',errorText(err),'error')}

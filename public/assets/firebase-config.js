@@ -4,7 +4,8 @@
  * Firebase web API keys are project identifiers, not private credentials. */
 export const firebaseConfig = {
   apiKey: 'AIzaSyAUCWl6p0mhaB2TOmcyd-2nZxNcNdSOplo',
-  authDomain: 'maximpress-org.firebaseapp.com',
+  // Use the Hosting origin so OAuth redirect handling remains first-party.
+  authDomain: 'maximpress-org.web.app',
   projectId: 'maximpress-org',
   appId: '1:1054235184334:web:a81401a11bd004303dd49f'
 };

@@ -19,6 +19,8 @@ export function client() {
     ]);
     const app = appMod.initializeApp(firebaseConfig);
     const auth = authMod.getAuth(app);
+    auth.useDeviceLanguage();
+    await authMod.setPersistence(auth,authMod.browserLocalPersistence);
     const db = fs.getFirestore(app);
     return {auth, db, a:authMod, fs};
   })();
@@ -98,6 +100,8 @@ export function errorText(e){
   'auth/too-many-requests':'Too many attempts. Please try again later.',
   'auth/popup-closed-by-user':'Sign-in was cancelled.',
   'auth/popup-blocked':'Your browser blocked the sign-in popup. Allow popups and retry.',
+  'auth/internal-error':'Google sign-in could not start in this browser. Open this page in Chrome, Edge, or Safari and try again.',
+  'auth/operation-not-supported-in-this-environment':'Google sign-in is not supported inside this embedded browser. Open the website in Chrome, Edge, or Safari.',
   'auth/unauthorized-domain':'This website domain is not yet authorized in Firebase Authentication.',
   'auth/operation-not-allowed':'This sign-in method is not yet enabled in Firebase Authentication.',
   'permission-denied':'The database rejected this operation. Check your email verification and Firestore security rules.'

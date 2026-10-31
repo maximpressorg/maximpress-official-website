@@ -35,17 +35,15 @@ body[data-account-page=auth] .mi-auth-brand img{display:block;margin:0 auto 6px;
 body[data-account-page=auth] .mi-auth-brand strong{font-weight:900;font-size:15px;color:#332858}
 body[data-account-page=auth] .mi-auth-brand small{display:block;font-size:10px;color:#827395;letter-spacing:.12em}
 @media(max-width:560px){body[data-account-page=auth] .mi-auth-card{padding:24px 20px;border-radius:17px}body[data-account-page=auth] .mi-main{padding:20px 0 45px}}
-/* Clean premium V2.8 intro, no skip button or fake loading indicator. */
-#splash.brand-intro{background:radial-gradient(circle at 50% 45%,#272050 0%,#141329 40%,#0e0c1c 90%)}
-#splash.brand-intro::before{background:conic-gradient(from 40deg,transparent 5%,#8e47dc16 27%,transparent 37%,#e04c9c18 56%,transparent 72%,#9868ea17 89%,transparent 100%);animation-duration:9s}
-#splash.brand-intro::after{inset:27px;border-color:#a28ec821}
-#splash.brand-intro .brand-intro-glow{opacity:.20;filter:blur(94px)}
-#splash.brand-intro .brand-intro-symbol{width:clamp(170px,24vh,240px);height:clamp(170px,24vh,240px);filter:drop-shadow(0 0 33px #a342db65)}
-#splash.brand-intro .brand-intro-symbol::before{border:1px solid #dd9aff5d;box-shadow:0 0 42px #ad48dd34,inset 0 0 22px #854cc421}
-#splash.brand-intro .brand-intro-wordmark em{background-image:linear-gradient(95deg,#c3a6ff,#d77dd4,#ff84b7)}
-#splash.brand-intro .brand-intro-rule{display:none}
-#splash.brand-intro .brand-intro-tagline{color:#ead8fa}
-@media(prefers-reduced-motion:reduce){#splash.brand-intro::before{animation:none}}
+/* Simple, fast intro: logo, name and tagline without decorative motion. */
+#splash.brand-intro{background:#111126;transition:opacity .18s ease,visibility .18s ease}
+#splash.brand-intro::before,#splash.brand-intro::after,#splash.brand-intro .brand-intro-glow,#splash.brand-intro .brand-intro-rule{display:none}
+#splash.brand-intro .brand-intro-center{animation:none;transform:none}
+#splash.brand-intro .brand-intro-symbol{width:96px;height:96px;filter:none;animation:none}
+#splash.brand-intro .brand-intro-symbol::before{display:none}
+#splash.brand-intro .brand-intro-wordmark{font-size:clamp(42px,7vw,66px);margin:12px 0 2px;text-shadow:none}
+#splash.brand-intro .brand-intro-wordmark em{background-image:none;color:#d99be5}
+#splash.brand-intro .brand-intro-tagline{color:#d9d7e8;font-size:10px;letter-spacing:.24em;margin-top:8px}
 /* Real, unseeded review feedback; append below existing quotation without altering it. */
 .mi-review-stars{font-size:16px;color:#aeb5c4;letter-spacing:2px;margin:10px 0 0;display:flex;gap:7px;align-items:center}
 .mi-review-stars small{font-size:10px;letter-spacing:0;color:#747e8e;font-weight:650}
