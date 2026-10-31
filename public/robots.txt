@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://maximpress.pages.dev/sitemap.xml
+Sitemap: https://maximpress-org.web.app/sitemap.xml
