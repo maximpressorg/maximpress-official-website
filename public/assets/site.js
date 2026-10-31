@@ -1,0 +1,60 @@
+(()=>{'use strict';const t=document.querySelector('.menu-toggle'),m=document.querySelector('.mobile-nav');if(t&&m){t.addEventListener('click',()=>{const x=m.classList.toggle('open');t.setAttribute('aria-expanded',x?'true':'false');t.setAttribute('aria-label',x?'Close menu':'Open menu')});m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{m.classList.remove('open');t.setAttribute('aria-expanded','false')}));document.addEventListener('keydown',e=>{if(e.key==='Escape'){m.classList.remove('open');t.setAttribute('aria-expanded','false')}})}
+document.querySelectorAll('.filter-row').forEach(row=>{const items=[...row.parentElement.querySelectorAll('[data-category]')];row.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{row.querySelectorAll('[data-filter]').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');items.forEach(x=>x.hidden=!(b.dataset.filter==='all'||x.dataset.category?.split(/\s+/).includes(b.dataset.filter)))}))});
+const form=document.querySelector('#contact-form');if(form){const selected=new URLSearchParams(location.search).get('service'),picker=form.querySelector('[name="service"]');if(selected&&[...picker.options].some(x=>x.value===selected))picker.value=selected;const status=document.querySelector('#form-status');const body=()=>{let v=new FormData(form);return 'MAXIMPRESS PROJECT INQUIRY\n\nName: '+(v.get('name')||'')+'\nEmail: '+(v.get('email')||'')+'\nBusiness: '+(v.get('business')||'')+'\nService: '+(v.get('service')||'')+'\nPlatforms: '+(v.get('platforms')||'')+'\nBudget: '+(v.get('budget')||'')+'\n\nProject goals:\n'+(v.get('message')||'')+'\n\nGenerated locally. No payment or passwords included.'};const valid=()=>{if(!form.reportValidity()){status.className='form-status error';status.textContent='Complete the required fields and consent checkbox.';return false}return true};form.addEventListener('submit',e=>{e.preventDefault();if(!valid())return;status.className='form-status success';status.textContent='Your email draft should open. Please review and press Send in your email app; this site has not submitted it.';location.href='mailto:maximpress.org@gmail.com?subject='+encodeURIComponent('MaxImpress project inquiry: '+picker.value)+'&body='+encodeURIComponent(body())});document.getElementById('download-brief')?.addEventListener('click',()=>{if(!valid())return;const url=URL.createObjectURL(new Blob([body()],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='MaxImpress_Project_Inquiry.txt';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),400);status.className='form-status success';status.textContent='Brief saved on your device; send your email separately to contact us.'})}})();
+
+// Video autoplay: browsers often disallow unmuted autoplay. Attempt sound first, then offer a one-tap control.
+(()=>{const video=document.getElementById('maximpress-about-video');if(!video)return;const activate=document.getElementById('enable-about-sound');video.muted=false;const show=()=>{if(activate)activate.hidden=false};const tryPlay=video.play();if(tryPlay&&typeof tryPlay.catch==='function')tryPlay.catch(()=>{video.muted=true;video.play().catch(()=>{});show()});if(activate)activate.addEventListener('click',()=>{video.muted=false;video.play().then(()=>{activate.hidden=true}).catch(()=>{show()})});video.addEventListener('volumechange',()=>{if(activate&&!video.muted)activate.hidden=true})})();
+
+// V1.4: animate the complete package card on expansion and on closing.
+(()=>{document.querySelectorAll('details.package-card').forEach(card=>{const summary=card.querySelector('summary');if(!summary)return;let running=false;summary.addEventListener('click',e=>{e.preventDefault();if(running)return;running=true;const start=card.getBoundingClientRect().height;const shouldOpen=!card.open;if(shouldOpen)card.open=true;const end=shouldOpen?card.scrollHeight:summary.getBoundingClientRect().height;const a=card.animate([{height:start+'px',opacity:shouldOpen?.96:1},{height:end+'px',opacity:shouldOpen?1:.97}],{duration:380,easing:'cubic-bezier(.2,.8,.2,1)'});card.style.overflow='hidden';card.classList.add('animating');const complete=()=>{if(!shouldOpen)card.open=false;card.style.overflow='';card.classList.remove('animating');running=false};a.onfinish=complete;a.oncancel=complete});});const target=location.hash?document.getElementById(location.hash.slice(1)):null;if(target?.matches('details.package-card'))target.open=true;})();
+
+// Keep the initial homepage hero unobstructed; make the familiar contact shortcut appear after scrolling.
+(()=>{if(!document.body.classList.contains('home-page'))return;const btn=document.querySelector('.floating-contact');const hero=document.querySelector('.hero');if(!btn||!hero)return;btn.classList.add('home-contact-hidden');const change=()=>{const threshold=Math.min(hero.getBoundingClientRect().height*.55,470);btn.classList.toggle('home-contact-hidden',window.scrollY<threshold)};window.addEventListener('scroll',change,{passive:true});change()})();
+
+// V1.5 — Contact dock: lift-out menu, accessible keyboard and outside-click close.
+(()=>{'use strict';document.querySelectorAll('[data-contact-dock]').forEach(dock=>{
+ const toggle=dock.querySelector('.floating-contact'), panel=dock.querySelector('.contact-dock-panel');
+ if(!toggle||!panel)return;
+ const setOpen=open=>{dock.classList.toggle('is-open',open);toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close MaxImpress contact options':'Open MaxImpress contact options');panel.setAttribute('aria-hidden',String(!open));panel.inert=!open;if(open)panel.querySelector('a,button')?.focus({preventScroll:true});else toggle.focus({preventScroll:true});};
+ toggle.addEventListener('click',()=>setOpen(!dock.classList.contains('is-open')));
+ dock.querySelector('.contact-dock-close')?.addEventListener('click',()=>setOpen(false));
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&dock.classList.contains('is-open'))setOpen(false)});
+ document.addEventListener('pointerdown',e=>{if(dock.classList.contains('is-open')&&!dock.contains(e.target)){dock.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');panel.setAttribute('aria-hidden','true');panel.inert=true;}});
+ dock.querySelector('[data-whatsapp-unavailable]')?.addEventListener('click',()=>{const t=dock.querySelector('.dock-toast');if(!t)return;t.textContent='WhatsApp is temporarily unavailable. Please use Gmail, X, Instagram, or request a free strategic call.';t.classList.add('visible');t.focus?.();});
+ panel.inert=true;
+ });})();
+
+// V1.5 — Call requests are not confirmed bookings. Prefill the existing inquiry workflow.
+(()=>{const form=document.querySelector('#contact-form');if(!form)return;const params=new URLSearchParams(location.search);if(params.get('meeting')!=='1')return;const heading=document.querySelector('.form-heading h2');if(heading)heading.textContent='Request your free strategic call.';const note=document.querySelector('.form-heading p');if(note)note.textContent='Share your goals and preferred call time. Your request opens in your email app; a meeting is booked only after MaxImpress confirms the time.';const message=form.querySelector('[name="message"]');if(message&&!message.value)message.value='I would like to request a free strategic call.\nPreferred date/time and time zone: \nWhat I want to discuss: ';const submit=form.querySelector('button[type="submit"]');if(submit)submit.textContent='Prepare my call request';})();
+
+// V1.6 — portfolio grouped filters update both groups and project counts.
+(()=>{const row=document.querySelector('.portfolio-grid .portfolio-group-section')?.closest('.portfolio-grid')?.parentElement?.querySelector('.filter-row');if(!row)return;const sections=[...document.querySelectorAll('.portfolio-group-section')];if(!sections.length)return;row.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{const chosen=button.dataset.filter;sections.forEach(sec=>{const match=chosen==='all'||sec.dataset.portfolioGroup===chosen;sec.hidden=!match;sec.style.display=match?'':'none'});const extras=document.querySelector('.portfolio-unmatched-asset-details');if(extras)extras.hidden=chosen!=='all'&&chosen!=='others';}));})();
+// If provider meeting not configured, offer truthful status instead of a dead Zoom link.
+(()=>{document.querySelectorAll('[data-zoom-unavailable]').forEach(b=>b.addEventListener('click',()=>{const dock=b.closest('[data-contact-dock]'),toast=dock?.querySelector('.dock-toast');if(!toast)return;toast.textContent='Zoom links are shared only after a meeting time has been confirmed. Use Schedule a meeting to request a call.';toast.classList.add('visible')}))})();
+
+
+// Visitor-authored review collection: drafts email, never falsely claims backend submission.
+document.addEventListener('DOMContentLoaded',()=>{
+ const form=document.getElementById('review-submission-form');if(!form)return;
+ form.addEventListener('submit',event=>{
+  event.preventDefault();if(!form.reportValidity())return;
+  const data=new FormData(form);const consent=data.get('consent');
+  if(!consent)return;
+  const rating=data.get('rating');if(!rating)return;
+  const msg=['Customer name: '+data.get('reviewer'),'Reply email: '+data.get('reply'),
+    'Service: '+data.get('service'),'Customer rating: '+rating+'/5','',
+    'Customer-authored review:',''+data.get('review'),'','Publication consent requested; verify before publishing.'].join('\n');
+  const url='mailto:maximpress.org@gmail.com?subject='+encodeURIComponent('Review submission — '+data.get('service'))+'&body='+encodeURIComponent(msg);
+  const status=document.getElementById('review-form-status');
+  if(status) status.textContent='Your email application is opening. Please send the prepared email to complete your submission.';
+  window.location.href=url;
+ });
+});
+
+// V2.5: show branded home introduction for 1.8 seconds once per tab; never block navigation beyond that window.
+(()=>{const intro=document.getElementById('splash');if(!intro)return;
+ const finish=()=>{intro.classList.add('intro-dismiss');document.body.classList.remove('intro-active');try{sessionStorage.setItem('maximpress_intro_v25_shown','1')}catch(e){};setTimeout(()=>intro.remove(),300)};
+ if(document.documentElement.classList.contains('intro-seen')){intro.remove();document.body.classList.remove('intro-active');return}
+ const elapsed=performance.now()-(window.maxImpressIntroStart||performance.now());
+ setTimeout(finish,Math.max(0,1800-elapsed));
+})();

@@ -1,0 +1,100 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function verified() { return signedIn() && request.auth.token.email_verified == true; }
+    function isAdmin() {
+      return verified() && 'admin' in request.auth.token && request.auth.token.admin == true;
+    }
+    function isOwner(uid) { return verified() && request.auth.uid == uid; }
+    function profileKeys() { return [
+      'customerId','fullName','email','photoURL','provider','linkedProviders',
+      'createdAt','lastLoginAt','category','goal','referral','socialProfile','onboardingComplete'
+    ]; }
+    function profileFieldsValid() {
+      return request.resource.data.keys().hasOnly(profileKeys()) &&
+        request.resource.data.keys().hasAll(profileKeys()) &&
+        request.resource.data.fullName is string && request.resource.data.fullName.size() <= 120 &&
+        request.resource.data.email is string && request.resource.data.email.size() <= 254 &&
+        request.resource.data.photoURL is string && request.resource.data.photoURL.size() <= 2048 &&
+        request.resource.data.provider is string && request.resource.data.provider.size() <= 50 &&
+        request.resource.data.linkedProviders is list && request.resource.data.linkedProviders.size() <= 10 &&
+        request.resource.data.category is string && request.resource.data.category.size() <= 100 &&
+        request.resource.data.goal is string && request.resource.data.goal.size() <= 110 &&
+        request.resource.data.referral is string && request.resource.data.referral.size() <= 100 &&
+        request.resource.data.socialProfile is string && request.resource.data.socialProfile.size() <= 250 &&
+        request.resource.data.onboardingComplete is bool &&
+        request.resource.data.createdAt is timestamp && request.resource.data.lastLoginAt is timestamp;
+    }
+    function adminOrderUpdateValid() {
+      return request.resource.data.keys().hasOnly([
+          'customerId','service','notes','status','paymentStatus','createdAt','updatedAt',
+          'progressNote','paymentReference'
+        ]) &&
+        request.resource.data.keys().hasAll([
+          'customerId','service','notes','status','paymentStatus','createdAt','updatedAt'
+        ]) &&
+        request.resource.data.customerId is string && request.resource.data.customerId.size() <= 128 &&
+        request.resource.data['service'] is string && request.resource.data['service'].size() <= 100 &&
+        request.resource.data.notes is string && request.resource.data.notes.size() <= 2000 &&
+        request.resource.data.status in ['pending','active','completed','cancelled'] &&
+        request.resource.data.paymentStatus in ['unconfirmed','confirmed','refunded'] &&
+        request.resource.data.createdAt is timestamp &&
+        request.resource.data.updatedAt == request.time &&
+        (!request.resource.data.keys().hasAny(['progressNote']) ||
+          (request.resource.data.progressNote is string && request.resource.data.progressNote.size() <= 400)) &&
+        (!request.resource.data.keys().hasAny(['paymentReference']) ||
+          (request.resource.data.paymentReference is string && request.resource.data.paymentReference.size() <= 120));
+    }
+    match /customers/{uid} {
+      allow get, list: if isOwner(uid) || isAdmin();
+      allow create: if isOwner(uid) &&
+        request.resource.data.customerId == uid &&
+        request.resource.data.email == request.auth.token.email &&
+        request.resource.data.createdAt == request.time &&
+        request.resource.data.lastLoginAt == request.time &&
+        request.resource.data.onboardingComplete == false &&
+        request.resource.data.category == '' && request.resource.data.goal == '' &&
+        request.resource.data.referral == '' && request.resource.data.socialProfile == '' &&
+        profileFieldsValid();
+      allow update: if isOwner(uid) &&
+        profileFieldsValid() &&
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          'fullName','category','goal','referral','socialProfile','onboardingComplete',
+          'linkedProviders','lastLoginAt'
+        ]) &&
+        // No account can roll onboarding backward once completed.
+        (!resource.data.onboardingComplete || request.resource.data.onboardingComplete == true) &&
+        // Returning sessions may refresh last-login with the server time.
+        (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['lastLoginAt']) ||
+          request.resource.data.lastLoginAt == request.time)
+      ;
+      allow delete: if false;
+    }
+    match /orders/{orderId} {
+      allow get, list: if isAdmin() || (verified() && resource.data.customerId == request.auth.uid);
+      allow create: if verified() &&
+        request.resource.data.keys().hasOnly([
+          'customerId','service','notes','status','paymentStatus','createdAt','updatedAt'
+        ]) &&
+        request.resource.data.keys().hasAll([
+          'customerId','service','notes','status','paymentStatus','createdAt','updatedAt'
+        ]) &&
+        request.resource.data.customerId == request.auth.uid &&
+        request.resource.data['service'] is string && request.resource.data['service'].size() <= 100 &&
+        request.resource.data.notes is string && request.resource.data.notes.size() <= 2000 &&
+        request.resource.data.status == 'pending' &&
+        request.resource.data.paymentStatus == 'unconfirmed' &&
+        request.resource.data.createdAt == request.time &&
+        request.resource.data.updatedAt == request.time;
+      allow update: if isAdmin() &&
+        adminOrderUpdateValid() &&
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          'status','paymentStatus','progressNote','paymentReference','updatedAt'
+        ]);
+      allow delete: if false;
+    }
+    // All other paths default to no access.
+    match /{document=**} { allow read, write: if false; }
+  }
+}

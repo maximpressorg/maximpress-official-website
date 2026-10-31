@@ -1,0 +1,24 @@
+{
+  "name": "maximpress-owner-firebase-maintenance",
+  "private": true,
+  "version": "2.7.0",
+  "description": "Local-only admin account bootstrap tool; the public website needs no npm build",
+  "type": "module",
+  "scripts": {
+    "grant-admin": "node tools/grant-admin.mjs",
+    "check:js": "node --check public/assets/site.js && node --check public/assets/analytics.js && node --check public/assets/analytics-config.js && node --check public/assets/firebase-config.js && node --check public/assets/auth-core.js && node --check public/assets/auth-header.js && node --check public/assets/account-pages.js",
+    "check:links": "npx --yes linkinator@7.5.3 public --recurse --verbosity error --skip \"https://.*\"",
+    "test:rules": "npx --yes firebase-tools@15.34.2 emulators:exec --only firestore \"node --test tests/firestore.rules.test.mjs\" --project demo-maximpress-rules",
+    "test": "npm run check:js && npm run check:links"
+  },
+  "dependencies": {
+    "firebase-admin": "^14.5.0"
+  },
+  "devDependencies": {
+    "@firebase/rules-unit-testing": "^6.0.0",
+    "firebase": "^13.1.0"
+  },
+  "overrides": {
+    "@grpc/grpc-js": "^1.14.0"
+  }
+}

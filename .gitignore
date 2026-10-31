@@ -1,0 +1,12 @@
+# Local credentials; never commit secrets or customer data
+.env
+.env.*
+!.env.example
+node_modules/
+.firebase/
+*.log
+service-account*.json
+*-adminsdk-*.json
+credentials*.json
+*customer-export*.csv
+.DS_Store
