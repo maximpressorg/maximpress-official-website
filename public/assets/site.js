@@ -33,28 +33,10 @@ const form=document.querySelector('#contact-form');if(form){const selected=new U
 (()=>{document.querySelectorAll('[data-zoom-unavailable]').forEach(b=>b.addEventListener('click',()=>{const dock=b.closest('[data-contact-dock]'),toast=dock?.querySelector('.dock-toast');if(!toast)return;toast.textContent='Zoom links are shared only after a meeting time has been confirmed. Use Schedule a meeting to request a call.';toast.classList.add('visible')}))})();
 
 
-// Visitor-authored review collection: drafts email, never falsely claims backend submission.
-document.addEventListener('DOMContentLoaded',()=>{
- const form=document.getElementById('review-submission-form');if(!form)return;
- form.addEventListener('submit',event=>{
-  event.preventDefault();if(!form.reportValidity())return;
-  const data=new FormData(form);const consent=data.get('consent');
-  if(!consent)return;
-  const rating=data.get('rating');if(!rating)return;
-  const msg=['Customer name: '+data.get('reviewer'),'Reply email: '+data.get('reply'),
-    'Service: '+data.get('service'),'Customer rating: '+rating+'/5','',
-    'Customer-authored review:',''+data.get('review'),'','Publication consent requested; verify before publishing.'].join('\n');
-  const url='mailto:maximpress.org@gmail.com?subject='+encodeURIComponent('Review submission — '+data.get('service'))+'&body='+encodeURIComponent(msg);
-  const status=document.getElementById('review-form-status');
-  if(status) status.textContent='Your email application is opening. Please send the prepared email to complete your submission.';
-  window.location.href=url;
- });
-});
-
 // V2.5: show branded home introduction for 1.8 seconds once per tab; never block navigation beyond that window.
 (()=>{const intro=document.getElementById('splash');if(!intro)return;
- const finish=()=>{intro.classList.add('intro-dismiss');document.body.classList.remove('intro-active');try{sessionStorage.setItem('maximpress_intro_v25_shown','1')}catch(e){};setTimeout(()=>intro.remove(),300)};
+ const finish=()=>{intro.classList.add('intro-dismiss');document.body.classList.remove('intro-active');try{sessionStorage.setItem('maximpress_intro_v28_shown','1')}catch(e){};setTimeout(()=>intro.remove(),300)};
  if(document.documentElement.classList.contains('intro-seen')){intro.remove();document.body.classList.remove('intro-active');return}
  const elapsed=performance.now()-(window.maxImpressIntroStart||performance.now());
- setTimeout(finish,Math.max(0,1800-elapsed));
+ setTimeout(finish,Math.max(0,1550-elapsed));
 })();

@@ -1,18 +1,23 @@
-# MaxImpress New Official Website V2.7 — Firebase and GitHub Ready
+# MaxImpress New Official Website — V2.8
 
-**Baseline:** owner-uploaded MaxImpress V2.6 Customer Portal ZIP. Website marketing visuals, existing content, logos, photos, video, branding, and pages are preserved. Customer management has an expanded private dashboard. GA4 public marketing-page tracking is added but inactive without its real measurement ID.
+Authoritative baseline: owner-uploaded V2.7. Latest edits: login UX, signup-first social provider buttons, consent-once popup, logged-in navigation gate, branded intro, authentic review reactions and moderated comments.
 
-**Deployment structure:** `public/` contains ONLY deployable site files; `firebase.json` and `firestore.rules` live outside that folder. GitHub Actions files are under `.github/workflows/`.
+**Not connected/live:** Firebase config, Apple configuration, GitHub, analytics ID, deployment, account and moderation functionality require the owner's real project credentials and deployment.
 
-**Not yet live:** Firebase web-app credentials, GA4 ID, GitHub repository, Firebase project, owner admin claim, hosting, DNS, verified traffic and production workflows all require account-level setup.
+See `docs/V2.8_CHANGELOG.md` for details and **important limitation**: static HTML is not a secure access-control layer. Marketing prices embedded into HTML cannot be hidden securely via JavaScript.
 
-Read `docs/FIREBASE_MOVE_AND_OWNER_DASHBOARD.md` for exact setup, GitHub, admin privileges, real analytics and domain/SEO migration. Read `docs/CUSTOMER_PORTAL_SETUP.md` for the existing V2.6 customer-authentication instructions (older instructions refer to Cloudflare Pages and to config paths before the move; use the V2.7 guide for Firebase Hosting and new `public/` paths).
+1. Configure `public/assets/firebase-config.js` with public Firebase web-app settings, enable Firebase Authentication providers and authorize the target domain.
+2. Deploy Firestore rules (`firebase deploy --only firestore:rules`) then Hosting (`firebase deploy --only hosting`); or use approved GitHub actions after configuring secrets.
+3. For GA4 add the GA4 public measurement ID to `public/assets/analytics-config.js`; tracking runs only after the visitor accepts analytics.
+4. Set Firebase admin custom claim server-side following V2.7 docs to enable Owner Dashboard and comment moderation.
+5. Test Google/Apple logins, email/password verification, access routing, consent, mobile, comments, votes and moderation on the real deployed origin.
+6. Verify platform-sourced ratings before editing `public/assets/review-ratings.json`, otherwise keep null values.
 
-## Local quality checks
+V2.7 docs remain available under `docs/`.
 
-- `npm ci --ignore-scripts` installs the pinned local QA dependencies.
-- `npm audit --audit-level=high` checks the dependency tree.
-- `npm test` validates all public JavaScript and every internal website link.
-- `npm run test:rules` starts the local Firestore emulator and verifies customer isolation, email-verification enforcement, owner-administrator access, and protected order ownership. Java 21 or newer is required.
+### Status of this package
+All additions are source-code changes. This environment cannot validate live Google or Apple OAuth, Firestore writes, or deploy to your Firebase/GitHub projects without their real external setup. Mobile/desktop browser execution is also environment-restricted; static checks passed. No verified review ratings or historical likes/dislikes were fabricated.
 
-The GitHub quality workflow repeats these checks on every pull request and push. The production workflow deploys Firestore rules and indexes before Firebase Hosting, and refuses to release while Firebase, Analytics, sitemap, or canonical placeholders remain.
+The `account.html?mode=register` page now displays the new sign-up layout even while Firebase remains unconfigured, but sign-up itself stays disabled until configured. Successful Firebase email/password registration creates a signed-in session, then waits for the mandatory email verification before private account access.
+
+**Privacy and pricing:** Client-side navigation gates do not protect static HTML prices. For enforceable confidentiality, remove price and restricted details from `public/` and serve them from a verified-authentication backend.

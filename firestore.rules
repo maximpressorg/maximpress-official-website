@@ -57,7 +57,7 @@ service cloud.firestore {
         request.resource.data.category == '' && request.resource.data.goal == '' &&
         request.resource.data.referral == '' && request.resource.data.socialProfile == '' &&
         profileFieldsValid();
-      allow update: if isOwner(uid) &&
+      allow update: if isAdmin() || (isOwner(uid) &&
         profileFieldsValid() &&
         request.resource.data.diff(resource.data).affectedKeys().hasOnly([
           'fullName','category','goal','referral','socialProfile','onboardingComplete',
@@ -68,7 +68,7 @@ service cloud.firestore {
         // Returning sessions may refresh last-login with the server time.
         (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['lastLoginAt']) ||
           request.resource.data.lastLoginAt == request.time)
-      ;
+      );
       allow delete: if false;
     }
     match /orders/{orderId} {
@@ -92,6 +92,54 @@ service cloud.firestore {
         request.resource.data.diff(resource.data).affectedKeys().hasOnly([
           'status','paymentStatus','progressNote','paymentReference','updatedAt'
         ]);
+      allow delete: if false;
+    }
+    function validReviewId(id) {return id in ['r01','r02','r03','r04','r05','r06','r07','r08','r09','r10','r11','r12','r13','r14','r15','r16'] || id.matches('s_[A-Za-z0-9]{20}');}
+    match /reviewVotes/{reviewId}/votes/{uid} {
+      // Review page requires login; votes are visible to signed-in customers for live counts.
+      allow get, list: if verified() && validReviewId(reviewId);
+      allow create, update: if validReviewId(reviewId) && isOwner(uid) &&
+        request.resource.data.keys().hasOnly(['value','updatedAt']) &&
+        request.resource.data.keys().hasAll(['value','updatedAt']) &&
+        request.resource.data.value in [1,-1] &&
+        request.resource.data.updatedAt == request.time;
+      allow delete: if validReviewId(reviewId) && isOwner(uid);
+    }
+    match /reviewComments/{reviewId}/entries/{entryId} {
+      allow get: if validReviewId(reviewId) && (isAdmin() || (verified() && resource.data.uid == request.auth.uid) || (verified() && resource.data.status == 'approved'));
+      allow list: if validReviewId(reviewId) && (isAdmin() || (verified() && resource.data.status == 'approved'));
+      allow create: if validReviewId(reviewId) && verified() &&
+        request.resource.data.keys().hasOnly(['uid','name','text','status','createdAt','updatedAt']) &&
+        request.resource.data.keys().hasAll(['uid','name','text','status','createdAt','updatedAt']) &&
+        request.resource.data.uid == request.auth.uid &&
+        request.resource.data.name is string && request.resource.data.name.size() <= 90 &&
+        request.resource.data.text is string && request.resource.data.text.size() >= 3 && request.resource.data.text.size() <= 700 &&
+        request.resource.data.status == 'pending' &&
+        request.resource.data.createdAt == request.time && request.resource.data.updatedAt == request.time;
+      allow update: if isAdmin() &&
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status','updatedAt']) &&
+        request.resource.data.status in ['approved','rejected'] &&
+        request.resource.data.updatedAt == request.time;
+      allow delete: if false;
+    }
+    match /reviewSubmissions/{submissionId} {
+      allow get: if isAdmin() || (verified() && resource.data.uid == request.auth.uid) || (verified() && resource.data.status == 'approved');
+      allow list: if isAdmin() || (verified() && resource.data.status == 'approved');
+      allow create: if verified() &&
+        request.resource.data.keys().hasOnly(['uid','name','email','service','rating','review','consent','status','createdAt','updatedAt']) &&
+        request.resource.data.keys().hasAll(['uid','name','email','service','rating','review','consent','status','createdAt','updatedAt']) &&
+        request.resource.data.uid == request.auth.uid &&
+        request.resource.data.email == request.auth.token.email &&
+        request.resource.data.name is string && request.resource.data.name.size() >= 2 && request.resource.data.name.size() <= 120 &&
+        request.resource.data['service'] is string && request.resource.data['service'].size() >= 2 && request.resource.data['service'].size() <= 100 &&
+        request.resource.data.rating is int && request.resource.data.rating >= 1 && request.resource.data.rating <= 5 &&
+        request.resource.data.review is string && request.resource.data.review.size() >= 15 && request.resource.data.review.size() <= 3000 &&
+        request.resource.data.consent == true && request.resource.data.status == 'pending' &&
+        request.resource.data.createdAt == request.time && request.resource.data.updatedAt == request.time;
+      allow update: if isAdmin() &&
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status','updatedAt']) &&
+        request.resource.data.status in ['approved','rejected'] &&
+        request.resource.data.updatedAt == request.time;
       allow delete: if false;
     }
     // All other paths default to no access.

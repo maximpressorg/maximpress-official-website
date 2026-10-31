@@ -142,3 +142,44 @@ test('an admin claim without a verified email is denied', async () => {
   }).firestore();
   await assertFails(getDocs(collection(db, 'customers')));
 });
+
+test('verified customers can cast only their own valid review vote', async () => {
+  const db = verified('alice', 'alice@example.com');
+  await assertSucceeds(setDoc(doc(db, 'reviewVotes', 'r01', 'votes', 'alice'), {
+    value: 1,
+    updatedAt: serverTimestamp(),
+  }));
+  await assertFails(setDoc(doc(db, 'reviewVotes', 'r01', 'votes', 'bob'), {
+    value: 1,
+    updatedAt: serverTimestamp(),
+  }));
+  await assertFails(setDoc(doc(db, 'reviewVotes', 'r01', 'votes', 'alice'), {
+    value: 99,
+    updatedAt: serverTimestamp(),
+  }));
+});
+
+test('review submissions start pending and only a verified admin moderates them', async () => {
+  const customerDb = verified('alice', 'alice@example.com');
+  await assertSucceeds(setDoc(doc(customerDb, 'reviewSubmissions', 'submission-one'), {
+    uid: 'alice',
+    name: 'Alice Customer',
+    email: 'alice@example.com',
+    service: 'Instagram Management',
+    rating: 5,
+    review: 'A genuine review long enough for the validation rules.',
+    consent: true,
+    status: 'pending',
+    createdAt: serverTimestamp(),
+    updatedAt: serverTimestamp(),
+  }));
+  await assertFails(updateDoc(doc(customerDb, 'reviewSubmissions', 'submission-one'), {
+    status: 'approved',
+    updatedAt: serverTimestamp(),
+  }));
+  const adminDb = verified('owner', 'maximpress.org@gmail.com', { admin: true });
+  await assertSucceeds(updateDoc(doc(adminDb, 'reviewSubmissions', 'submission-one'), {
+    status: 'approved',
+    updatedAt: serverTimestamp(),
+  }));
+});

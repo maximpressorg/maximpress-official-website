@@ -17,14 +17,14 @@
 2. Firebase Authentication: enable Email/Password and Google providers. Under Authentication → Settings → Authorized domains, add your actual Firebase Hosting `.web.app` domain, and later your custom domain. Keep Apple disabled unless Apple Developer setup is completed.
 3. Create Firestore; deploy production rules BEFORE opening registration to visitors. From an authenticated terminal at repo root run `firebase deploy --only firestore --project YOUR_FIREBASE_PROJECT_ID`. Review any permission prompts; never leave permissive test rules published.
 4. In Firebase → Project settings, enable/link Google Analytics, and get your **Web stream Measurement ID `G-...`**. Put it into `public/assets/analytics-config.js`. Review site privacy disclosures and any applicable consent handling before publishing. Traffic tracking starts with deployment and cannot recover previous untracked visits. For site reporting use https://analytics.google.com/analytics/web/ .
-5. Owner administration: register and verify the business account `maximpress.org@gmail.com` using this site after deployment. Get its UID from Firebase Console → Authentication → Users. The included owner-role tool refuses any other email address or an unverified account. In a trusted local terminal, securely provision Admin SDK credentials **outside this repository**, set `GOOGLE_APPLICATION_CREDENTIALS` to that file and run:
+5. Admins: first register a personal customer account with verified email using this site after deployment. Get its UID from Firebase Console → Authentication → Users. In a trusted local terminal, securely provision Admin SDK credentials **outside this repository**, set `GOOGLE_APPLICATION_CREDENTIALS` to that file and run:
 
 ```bash
 npm install
 node tools/grant-admin.mjs YOUR_FIREBASE_PROJECT_ID YOUR_OWN_FIREBASE_AUTH_UID
 ```
 
-Use **only the verified business-account UID**. This script reads the real Firebase Auth user and preserves existing custom claims. Do not provide a service-account JSON/key to ChatGPT or commit it to GitHub. For security, disable/delete any downloaded local key when no longer needed. Sign out and in again for a new ID token.
+Use **only your own** UID. This script reads the real Firebase Auth user and preserves existing custom claims. Do not provide a service-account JSON/key to ChatGPT or commit it to GitHub. For security, disable/delete any downloaded local key when no longer needed. Sign out and in again for a new ID token.
 
 ## 3. Repository setup and Firebase deployment
 

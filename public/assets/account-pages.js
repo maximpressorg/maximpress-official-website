@@ -4,6 +4,8 @@ const page=document.body.dataset.accountPage;
 const display=(id,text,type='')=>{const box=$(id);if(!box)return;box.textContent=text;box.className='mi-status '+type;box.setAttribute('role',type==='error'?'alert':'status')};
 const setBusy=(button,busy)=>{if(button)button.disabled=busy};
 const redirect=path=>location.replace(path);
+const pendingNext=()=>{try{const v=sessionStorage.getItem('mi-postlogin-next');if(!v)return null;const u=new URL(v,location.origin);return u.origin===location.origin&&u.pathname.endsWith('.html')&&!/\/(account|onboarding|admin)\.html$/.test(u.pathname)?u.pathname+u.search+u.hash:null}catch{return null}};
+const afterAuth=()=>{const t=pendingNext();if(t)sessionStorage.removeItem('mi-postlogin-next');return t||'dashboard.html'};
 const requireAccount=async()=>{
  const u=await currentUser();
  if(!u){redirect('account.html?mode=login');return null}
@@ -14,12 +16,36 @@ const options=(items,prompt='Select an option')=>`<option value="">${safe(prompt
 const fmt=entry=>dateText(entry?.createdAt);
 async function ready(){
  if(!page)return;
- if(!configured){display('account-status','Customer account features require Firebase setup by the website owner. No registration, sign-in, or database changes are occurring yet.','error');document.querySelectorAll('.mi-requires-config').forEach(e=>e.disabled=true);return}
+ if(!configured){
+  if(page==='auth'){
+   const tabs=[...document.querySelectorAll('[data-mi-mode]')];
+   const choose=mode=>{
+    mode=mode==='register'?'register':'login';
+    tabs.forEach(b=>b.setAttribute('aria-selected',String(b.dataset.miMode===mode)));
+    $('mi-name-row').classList.toggle('mi-hidden',mode!=='register');
+    $('mi-confirm-row').classList.toggle('mi-hidden',mode!=='register');
+    $('mi-name').required=mode==='register';$('mi-confirm').required=mode==='register';
+    $('mi-password').minLength=6;$('mi-password').autocomplete=mode==='register'?'new-password':'current-password';
+    $('mi-submit').textContent=mode==='register'?'Create Account':'Log In';
+    $('mi-reset-link').classList.toggle('mi-hidden',mode==='register');
+    $('mi-auth-title').textContent=mode==='register'?'Create an account':'Welcome back';
+    history.replaceState(null,'','account.html?mode='+mode);
+   };
+   tabs.forEach(t=>t.addEventListener('click',()=>choose(t.dataset.miMode)));
+   choose(new URLSearchParams(location.search).get('mode'));
+   $('mi-auth-form')?.addEventListener('submit',e=>e.preventDefault());
+   $('mi-reset-link')?.addEventListener('click',()=>display('account-status','Password reset is available once Firebase Authentication is connected.','error'));
+  }
+  display('account-status','Customer account features require Firebase setup by the website owner. No registration, sign-in, or database changes are occurring yet.','error');
+  document.querySelectorAll('.mi-requires-config').forEach(e=>e.disabled=true);return;
+ }
  try{if(page==='auth')await authPage();if(page==='onboarding')await onboardingPage();if(page==='dashboard')await dashboardPage();if(page==='settings')await settingsPage();if(page==='admin')await adminPage();}
  catch(e){display('account-status',errorText(e),'error');$('mi-loading')?.remove()}
 }
 async function authPage(){
  const {auth,a}=await client();
+ const incoming=new URLSearchParams(location.search).get('next');
+ if(incoming){try{const u=new URL(incoming,location.origin);if(u.origin===location.origin&&u.pathname.endsWith('.html')&& !/\/(account|onboarding|admin)\.html$/.test(u.pathname))sessionStorage.setItem('mi-postlogin-next',u.pathname+u.search+u.hash)}catch{}}
  const tabs=[...document.querySelectorAll('[data-mi-mode]')];
  const form=$('mi-auth-form');const forgot=$('mi-forgot-form');
  const choose=mode=>{
@@ -27,14 +53,14 @@ async function authPage(){
   tabs.forEach(b=>b.setAttribute('aria-selected',String(b.dataset.miMode===mode)));
   $('mi-name-row').classList.toggle('mi-hidden',mode!=='register');
   $('mi-confirm-row').classList.toggle('mi-hidden',mode!=='register');
-  $('mi-submit').textContent=mode==='register'?'Create My Account':'Log In';
+  $('mi-submit').textContent=mode==='register'?'Create Account':'Log In';
   $('mi-name').required=mode==='register';$('mi-confirm').required=mode==='register';
-  $('mi-password').minLength=mode==='register'?12:6;
+  $('mi-password').minLength=6;
   $('mi-password').autocomplete=mode==='register'?'new-password':'current-password';
   $('mi-reset-link').classList.toggle('mi-hidden',mode==='register');
   $('mi-form-section').classList.remove('mi-hidden');forgot.classList.add('mi-hidden');
-  document.querySelector('#mi-auth-title').textContent=mode==='register'?'Create your MaxImpress account':'Welcome back';
-  history.replaceState(null,'',`account.html?mode=${mode}`);
+  document.querySelector('#mi-auth-title').textContent=mode==='register'?'Create an account':'Welcome back';
+  history.replaceState(null,'',`account.html?mode=${mode}`+(incoming?'&next='+encodeURIComponent(incoming):''));
   display('account-status','');
  };
  tabs.forEach(b=>b.addEventListener('click',()=>choose(b.dataset.miMode)));
@@ -50,7 +76,7 @@ async function authPage(){
  const advance=async u=>{
   if(!isVerified(u)){verification();return}
   const profile=await ensureProfile(u);
-  redirect(profile.onboardingComplete?'dashboard.html':'onboarding.html');
+  redirect(profile.onboardingComplete?afterAuth():'onboarding.html');
  };
  if(user){if(!isVerified(user))verification();else await advance(user)}
  form.addEventListener('submit',async e=>{
@@ -59,7 +85,7 @@ async function authPage(){
   const email=$('mi-email').value.trim();const pass=$('mi-password').value;const submit=$('mi-submit');
   if(mode==='register'){
    if(!$('mi-name').value.trim()){display('account-status','Enter your full name.','error');return}
-   if(pass.length<12||!/[A-Z]/.test(pass)||!/[a-z]/.test(pass)||!/[0-9]/.test(pass)){display('account-status','Use at least 12 characters, including uppercase, lowercase, and a number.','error');return}
+   if(pass.length<6){display('account-status','Use at least 6 characters for your password.','error');return}
    if(pass!==$('mi-confirm').value){display('account-status','The passwords do not match.','error');return}
   }
   setBusy(submit,true);display('account-status','Processing your request…');
@@ -106,7 +132,7 @@ async function authPage(){
   display('account-status',`Connecting securely to ${kind==='google'?'Google':'Apple'}…`);
   try{const r=await a.signInWithPopup(auth,provider);await advance(r.user)}
   catch(err){
-   if(['auth/popup-blocked','auth/operation-not-supported-in-this-environment','auth/internal-error'].includes(err.code)){
+   if(['auth/popup-blocked','auth/operation-not-supported-in-this-environment'].includes(err.code)){
     try{await a.signInWithRedirect(auth,provider);return}catch(redirectErr){display('account-status',errorText(redirectErr),'error');return}
    }
    display('account-status',errorText(err),'error')
@@ -118,7 +144,7 @@ async function authPage(){
 async function onboardingPage(){
  const u=await requireAccount();if(!u)return;
  const p=await ensureProfile(u);
- if(p.onboardingComplete){redirect('dashboard.html');return}
+ if(p.onboardingComplete){redirect(afterAuth());return}
  $('mi-onboard-name').value=p.fullName||u.displayName||'';
  $('mi-category').innerHTML=options(categories);$('mi-goal').innerHTML=options(goals);$('mi-referral').innerHTML=options(referrals);
  $('mi-onboard-form').classList.remove('mi-hidden');$('mi-loading')?.remove();
@@ -128,7 +154,7 @@ async function onboardingPage(){
   const btn=$('mi-complete');setBusy(btn,true);
   try{
    await saveOnboarding(u.uid,{fullName:$('mi-onboard-name').value.trim().slice(0,120),category:$('mi-category').value,goal:$('mi-goal').value,referral:$('mi-referral').value,socialProfile:$('mi-social').value.trim().slice(0,250)});
-   redirect('dashboard.html');
+   redirect(afterAuth());
   }catch(err){display('account-status',errorText(err),'error');setBusy(btn,false)}
  });
 }
