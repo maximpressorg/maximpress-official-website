@@ -33,9 +33,9 @@ const form=document.querySelector('#contact-form');if(form){const selected=new U
 (()=>{document.querySelectorAll('[data-zoom-unavailable]').forEach(b=>b.addEventListener('click',()=>{const dock=b.closest('[data-contact-dock]'),toast=dock?.querySelector('.dock-toast');if(!toast)return;toast.textContent='Zoom links are shared only after a meeting time has been confirmed. Use Schedule a meeting to request a call.';toast.classList.add('visible')}))})();
 
 
-// Keep the branded introduction brief and unobtrusive; show it once per tab.
+// Keep the branded introduction brief and unobtrusive; show it only on the first visit.
 (()=>{const intro=document.getElementById('splash');if(!intro)return;
- const finish=()=>{intro.classList.add('intro-dismiss');document.body.classList.remove('intro-active');try{sessionStorage.setItem('maximpress_intro_v28_shown','1')}catch(e){};setTimeout(()=>intro.remove(),300)};
+ const finish=()=>{intro.classList.add('intro-dismiss');document.body.classList.remove('intro-active');try{localStorage.setItem('maximpress_intro_seen','1')}catch(e){};setTimeout(()=>intro.remove(),300)};
  if(document.documentElement.classList.contains('intro-seen')){intro.remove();document.body.classList.remove('intro-active');return}
  const elapsed=performance.now()-(window.maxImpressIntroStart||performance.now());
  setTimeout(finish,Math.max(0,650-elapsed));
