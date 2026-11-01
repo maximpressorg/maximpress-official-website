@@ -1,6 +1,6 @@
 /** MaxImpress customer portal — Firebase 13.1.0 modular browser SDK.
  * No passwords, service-account credentials, or administrative claims live here. */
-import { firebaseConfig, appleSignInEnabled } from './firebase-config.js?v=20261102-auth8';
+import { firebaseConfig, appleSignInEnabled } from './firebase-config.js?v=20261102-auth9';
 export { appleSignInEnabled };
 export const configured = ['apiKey','authDomain','projectId','appId'].every(k =>
   typeof firebaseConfig[k] === 'string' && firebaseConfig[k].length > 8 && !firebaseConfig[k].startsWith('REPLACE_'));
@@ -49,7 +49,7 @@ export async function ensureProfile(u){
     await fs.setDoc(ref,data);
     return {...data,createdAt:null,lastLoginAt:null};
   }
-  await fs.updateDoc(ref,{lastLoginAt:fs.serverTimestamp(),linkedProviders:providerIds(u)});
+  fs.updateDoc(ref,{lastLoginAt:fs.serverTimestamp(),linkedProviders:providerIds(u)}).catch(()=>{});
   return old.data();
 }
 export async function saveOnboarding(uid,data){

@@ -1,4 +1,4 @@
-import {configured,client,currentUser,isVerified,primaryProvider,providerIds,ensureProfile,getProfile,saveOnboarding,updateProfile,requestService,getMyOrders,isAdmin,allCustomers,allOrders,updateOrder,logout,categories,goals,referrals,services,safe,dateText,errorText} from './auth-core.js?v=20261102-auth8';
+import {configured,client,currentUser,isVerified,primaryProvider,providerIds,ensureProfile,getProfile,saveOnboarding,updateProfile,requestService,getMyOrders,isAdmin,allCustomers,allOrders,updateOrder,logout,categories,goals,referrals,services,safe,dateText,errorText} from './auth-core.js?v=20261102-auth9';
 const $=id=>document.getElementById(id);
 const page=document.body.dataset.accountPage;
 const display=(id,text,type='')=>{const box=$(id);if(!box)return;box.textContent=text;box.className='mi-status '+type;box.setAttribute('role',type==='error'?'alert':'status')};
@@ -8,8 +8,8 @@ const pendingNext=()=>{try{const v=sessionStorage.getItem('mi-postlogin-next');i
 const afterAuth=()=>{const t=pendingNext();if(t)sessionStorage.removeItem('mi-postlogin-next');return t||'dashboard.html'};
 const requireAccount=async()=>{
  const u=await currentUser();
- if(!u){redirect('account.html?mode=login&auth=20261102-8');return null}
- if(!isVerified(u)){redirect('account.html?mode=login&auth=20261102-8&verify=1');return null}
+ if(!u){redirect('account.html?mode=login&auth=20261102-9');return null}
+ if(!isVerified(u)){redirect('account.html?mode=login&auth=20261102-9&verify=1');return null}
  return u;
 };
 const options=(items,prompt='Select an option')=>`<option value="">${safe(prompt)}</option>`+items.map(i=>`<option value="${safe(i)}">${safe(i)}</option>`).join('');
@@ -166,8 +166,9 @@ async function dashboardPage(){
  if(!p.onboardingComplete){redirect('onboarding.html');return}
  const name=p.fullName||u.displayName||'Customer';
  $('mi-welcome').textContent=`Welcome back, ${name}`;$('mi-display-name').textContent=name;$('mi-display-email').textContent=p.email||u.email||'';
- if(p.photoURL?.startsWith('https://')){
-  const img=document.createElement('img');img.src=p.photoURL;img.alt='Profile picture';img.referrerPolicy='no-referrer';$('mi-avatar').replaceChildren(img)
+ const profilePhoto=u.photoURL?.startsWith('https://')?u.photoURL:p.photoURL;
+ if(profilePhoto?.startsWith('https://')){
+  const img=document.createElement('img');img.src=profilePhoto;img.alt='Profile picture';img.referrerPolicy='no-referrer';$('mi-avatar').replaceChildren(img)
  }else $('mi-avatar').textContent=(name[0]||'M').toUpperCase();
  $('mi-customer-id').textContent=u.uid;$('mi-created').textContent=dateText(p.createdAt);
  $('mi-profile-category').textContent=p.category||'—';$('mi-profile-goal').textContent=p.goal||'—';
@@ -182,9 +183,9 @@ async function dashboardPage(){
   $('mi-metric-purchases').textContent=orders.filter(o=>o.paymentStatus==='confirmed').length;
   renderOrders(orders);
  };
- await refresh();
- if(await isAdmin(u))$('mi-admin-link').classList.remove('mi-hidden');
  $('mi-loading')?.remove();$('mi-dashboard-body').classList.remove('mi-hidden');
+ refresh().catch(err=>{display('account-status',errorText(err),'error');$('mi-order-list').innerHTML='<div class="mi-empty">Service history is temporarily unavailable. Your account remains signed in.</div>'});
+ isAdmin(u).then(admin=>{if(admin)$('mi-admin-link').classList.remove('mi-hidden')}).catch(()=>{});
  $('mi-request-form').addEventListener('submit',async e=>{
   e.preventDefault();if(!e.currentTarget.reportValidity())return;
   const btn=$('mi-request-submit');setBusy(btn,true);

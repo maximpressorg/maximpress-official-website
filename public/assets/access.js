@@ -1,5 +1,5 @@
 /** MaxImpress V2.8 navigation experience. Static HTML is not a server-side access boundary. */
-import {configured,currentUser,isVerified} from './auth-core.js?v=20261102-auth8';
+import {configured,currentUser,isVerified} from './auth-core.js?v=20261102-auth9';
 const prefix=document.querySelector('meta[name="mi-site-prefix"]')?.content||'';
 // Marketing and informational pages stay public. Only customer actions and
 // private account workspaces require authentication.
@@ -8,7 +8,7 @@ const rawPage=location.pathname.split('/').pop()||'index.html';
 const blocked=protectedPages.has(rawPage);
 const safeTarget = href=>{try{const u=new URL(href,location.href);if(u.origin!==location.origin||!u.pathname.endsWith('.html'))return null;return u;}catch{return null}};
 let granted=false;
-function urlFor(mode,u){const next=u?u.pathname+u.search+u.hash:'';return prefix+'account.html?mode='+mode+'&auth=20261102-8'+(next?'&next='+encodeURIComponent(next):'')}
+function urlFor(mode,u){const next=u?u.pathname+u.search+u.hash:'';return prefix+'account.html?mode='+mode+'&auth=20261102-9'+(next?'&next='+encodeURIComponent(next):'')}
 function modal(target){
   document.querySelector('.mi-access-panel')?.remove();
   const back=document.createElement('div');back.className='mi-access-panel';back.setAttribute('role','presentation');

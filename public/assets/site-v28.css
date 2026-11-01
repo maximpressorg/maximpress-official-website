@@ -45,15 +45,22 @@ body[data-account-page=auth] .mi-auth-brand strong{font-weight:900;font-size:15p
 body[data-account-page=auth] .mi-auth-brand small{display:block;font-size:10px;color:#827395;letter-spacing:.12em}
 @media(max-width:960px){body[data-account-page=auth] .mi-auth-layout{grid-template-columns:1fr;max-width:540px}body[data-account-page=auth] .mi-aside{display:none}}
 @media(max-width:560px){body[data-account-page=auth] .mi-auth-card{padding:26px 21px;border-radius:18px}body[data-account-page=auth] .mi-main{padding:20px 0 45px}}
-/* Simple, fast intro: logo, name and tagline without decorative motion. */
-#splash.brand-intro{background:#111126;transition:opacity .18s ease,visibility .18s ease}
-#splash.brand-intro::before,#splash.brand-intro::after,#splash.brand-intro .brand-intro-glow,#splash.brand-intro .brand-intro-rule{display:none}
-#splash.brand-intro .brand-intro-center{animation:none;transform:none}
-#splash.brand-intro .brand-intro-symbol{width:96px;height:96px;filter:none;animation:none}
+/* Premium 1.8-second brand introduction using the exact header identity. */
+#splash.brand-intro{background:radial-gradient(circle at 50% 42%,#fff 0,#faf8ff 46%,#f1edf9 100%);color:#172038;transition:opacity .45s ease,visibility .45s ease}
+#splash.brand-intro::before{display:block;inset:auto;width:min(520px,80vw);height:min(520px,80vw);border-radius:50%;background:transparent;border:1px solid #856ce51a;box-shadow:0 0 0 38px #d15ca909,0 0 0 76px #5dcbdc08;animation:intro-soft-ring 1.8s ease-out both;z-index:0}
+#splash.brand-intro::after{display:block;inset:22px;border:1px solid #392d6410;border-radius:20px}
+#splash.brand-intro .brand-intro-glow{display:block;filter:blur(40px);opacity:.16}
+#splash.brand-intro .brand-intro-rule{display:none}
+#splash.brand-intro .brand-intro-center{animation:intro-brand-arrive .72s cubic-bezier(.2,.8,.2,1) both;transform:none;z-index:1}
+#splash.brand-intro .brand-intro-symbol{width:104px;height:104px;filter:drop-shadow(0 18px 26px #47347a26);animation:none}
 #splash.brand-intro .brand-intro-symbol::before{display:none}
-#splash.brand-intro .brand-intro-wordmark{font-size:clamp(42px,7vw,66px);margin:12px 0 2px;text-shadow:none}
-#splash.brand-intro .brand-intro-wordmark em{background-image:none;color:#d99be5}
-#splash.brand-intro .brand-intro-tagline{color:#d9d7e8;font-size:10px;letter-spacing:.24em;margin-top:8px}
+#splash.brand-intro .brand-intro-wordmark{font-family:Inter,'Segoe UI',Arial,sans-serif;font-size:clamp(42px,7vw,66px);font-weight:900;letter-spacing:-.075em;margin:13px 0 1px;text-shadow:none;color:#172038}
+#splash.brand-intro .brand-intro-wordmark span{color:#172038}
+#splash.brand-intro .brand-intro-wordmark em{font-family:inherit;font-style:normal;font-weight:900;letter-spacing:inherit;background:linear-gradient(100deg,#6956dc,#d05a9c,#ff8e71);color:transparent;background-clip:text}
+#splash.brand-intro .brand-intro-tagline{color:#7f8798;font-size:9px;font-weight:850;letter-spacing:.25em;margin-top:7px;animation:intro-tag-reveal .6s .35s ease both}
+@keyframes intro-brand-arrive{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes intro-tag-reveal{from{opacity:0;letter-spacing:.34em}to{opacity:1;letter-spacing:.25em}}
+@keyframes intro-soft-ring{from{opacity:0;transform:scale(.78)}45%{opacity:1}to{opacity:.4;transform:scale(1)}}
 /* Real, unseeded review feedback; append below existing quotation without altering it. */
 .mi-review-stars{font-size:16px;color:#aeb5c4;letter-spacing:2px;margin:10px 0 0;display:flex;gap:7px;align-items:center}
 .mi-review-stars small{font-size:10px;letter-spacing:0;color:#747e8e;font-weight:650}

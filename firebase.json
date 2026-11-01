@@ -133,6 +133,15 @@
         ]
       },
       {
+        "source": "/assets/**/*.css",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, must-revalidate"
+          }
+        ]
+      },
+      {
         "source": "/assets/analytics-config.js",
         "headers": [
           {
