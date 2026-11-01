@@ -168,6 +168,22 @@ test('an admin claim without a verified email is denied', async () => {
   await assertFails(getDocs(collection(db, 'customers')));
 });
 
+test('the verified owner email has administration access and lookalike email does not', async () => {
+  await env.withSecurityRulesDisabled(async context => {
+    await setDoc(doc(context.firestore(), 'customers', 'alice'), {
+      ...profile('alice', 'alice@example.com'),
+      createdAt: new Date(),
+      lastLoginAt: new Date(),
+    });
+  });
+  await assertSucceeds(getDocs(collection(
+    verified('owner-email', 'maximpress.org@gmail.com'), 'customers'
+  )));
+  await assertFails(getDocs(collection(
+    verified('lookalike', 'maximpresto.org@gmail.com'), 'customers'
+  )));
+});
+
 test('verified customers can cast only their own valid review vote', async () => {
   const db = verified('alice', 'alice@example.com');
   await assertSucceeds(setDoc(doc(db, 'reviewVotes', 'r01', 'votes', 'alice'), {

@@ -1,6 +1,6 @@
 /** MaxImpress customer portal — Firebase 13.1.0 modular browser SDK.
  * No passwords, service-account credentials, or administrative claims live here. */
-import { firebaseConfig, appleSignInEnabled } from './firebase-config.js?v=20261102-auth10';
+import { firebaseConfig, appleSignInEnabled } from './firebase-config.js?v=20261102-auth11';
 export { appleSignInEnabled };
 export const configured = ['apiKey','authDomain','projectId','appId'].every(k =>
   typeof firebaseConfig[k] === 'string' && firebaseConfig[k].length > 8 && !firebaseConfig[k].startsWith('REPLACE_'));
@@ -72,7 +72,8 @@ export async function getMyOrders(uid){
 }
 export async function isAdmin(u){
   if(!u||!isVerified(u))return false;
-  return (await u.getIdTokenResult()).claims.admin===true;
+  const ownerEmail='maximpress.org@gmail.com';
+  return String(u.email||'').toLowerCase()===ownerEmail || (await u.getIdTokenResult()).claims.admin===true;
 }
 export async function allCustomers(){
   const {db,fs}=await client();

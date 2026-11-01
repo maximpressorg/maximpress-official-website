@@ -1,5 +1,5 @@
 /** MaxImpress V2.8 navigation experience. Static HTML is not a server-side access boundary. */
-import {configured,currentUser,isVerified} from './auth-core.js?v=20261102-auth10';
+import {configured,currentUser,isVerified} from './auth-core.js?v=20261102-auth11';
 const prefix=document.querySelector('meta[name="mi-site-prefix"]')?.content||'';
 // Marketing and informational pages stay public. Only customer actions and
 // private account workspaces require authentication.
