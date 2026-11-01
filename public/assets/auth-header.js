@@ -1,5 +1,5 @@
 /** Public-first navigation: visitors browse freely; project actions request an account. */
-import {configured,client,isVerified,logout,getProfile,safe} from './auth-core.js?v=20261102-auth9';
+import {configured,client,isVerified,logout,getProfile,safe} from './auth-core.js?v=20261102-auth10';
 const desktop=document.querySelector('.mi-account-nav'),mobile=document.querySelector('.mi-mobile-account');
 const prefix=document.querySelector('meta[name="mi-site-prefix"]')?.content||'';
 function show(u,p){
@@ -8,9 +8,9 @@ function show(u,p){
  const photo=u?.photoURL?.startsWith('https://')?`<img src="${safe(u.photoURL)}" alt="" referrerpolicy="no-referrer">`:`<span>${safe((p?.fullName||u?.displayName||u?.email||'M').trim().charAt(0).toUpperCase())}</span>`;
  const profile=`<div class="mi-profile-control"><button class="mi-profile-summary" type="button" aria-expanded="false" aria-haspopup="menu"><span class="mi-profile-photo">${photo}</span><span class="mi-profile-identity"><strong>${name}</strong><small>${email}</small><em>Customer ID: ${customerId}</em></span><span class="mi-profile-chevron" aria-hidden="true">⌄</span></button><div class="mi-profile-menu" role="menu"><a role="menuitem" href="${prefix}dashboard.html">My Dashboard</a><a role="menuitem" href="${prefix}contact.html">Start Your Project</a><a role="menuitem" href="${prefix}account-settings.html">Account Settings</a><button role="menuitem" type="button" data-mi-logout>Log Out</button></div></div>`;
  if(desktop)desktop.innerHTML=active?profile:
- `<a class="mi-auth-link mi-auth-create" href="${prefix}contact.html">Start Your Project</a>`;
+ `<a class="mi-auth-link mi-auth-create" href="${prefix}account.html?mode=login">Log In / Sign Up</a>`;
  if(mobile)mobile.innerHTML=active?profile:
- `<a href="${prefix}contact.html">Start Your Project</a>`;
+ `<a href="${prefix}account.html?mode=login">Log In / Sign Up</a>`;
  document.querySelectorAll('.mi-profile-summary').forEach(button=>button.addEventListener('click',e=>{e.stopPropagation();const control=button.closest('.mi-profile-control');const open=!control.classList.contains('is-open');document.querySelectorAll('.mi-profile-control.is-open').forEach(x=>x.classList.remove('is-open'));control.classList.toggle('is-open',open);button.setAttribute('aria-expanded',String(open))}));
  document.querySelectorAll('[data-mi-logout]').forEach(b=>b.addEventListener('click',async()=>{b.disabled=true;try{await logout()}catch{b.disabled=false;alert('Unable to log out. Please try again.')}}));
 }
