@@ -59,12 +59,26 @@ before(async () => {
 beforeEach(async () => env.clearFirestore());
 after(async () => { if (env) await env.cleanup(); });
 
-test('unverified customers cannot create profiles', async () => {
+test('signed-in unverified customers bootstrap only their own private profile', async () => {
   const db = env.authenticatedContext('alice', {
     email: 'alice@example.com',
     email_verified: false,
   }).firestore();
+  await assertSucceeds(setDoc(doc(db, 'customers', 'alice'), profile('alice', 'alice@example.com')));
+  await assertSucceeds(getDoc(doc(db, 'customers', 'alice')));
+  await assertFails(setDoc(doc(db, 'customers', 'bob'), profile('bob', 'alice@example.com')));
+  await assertFails(getDoc(doc(db, 'customers', 'bob')));
+  await assertFails(setDoc(doc(db, 'orders', 'unverified-order'), order('alice')));
+  await assertFails(setDoc(doc(db, 'reviewVotes', 'r01', 'votes', 'alice'), {
+    value: 1,
+    updatedAt: serverTimestamp(),
+  }));
+});
+
+test('anonymous visitors cannot create or read customer profiles', async () => {
+  const db = env.unauthenticatedContext().firestore();
   await assertFails(setDoc(doc(db, 'customers', 'alice'), profile('alice', 'alice@example.com')));
+  await assertFails(getDoc(doc(db, 'customers', 'alice')));
 });
 
 test('verified customers create only their own initial profile', async () => {
@@ -83,6 +97,17 @@ test('one customer cannot read another customer profile', async () => {
     });
   });
   await assertFails(getDoc(doc(verified('alice', 'alice@example.com'), 'customers', 'bob')));
+});
+
+test('profile updates reject ownership changes, schema pollution, privilege fields, and oversized data', async () => {
+  const db = verified('alice', 'alice@example.com');
+  const ref = doc(db, 'customers', 'alice');
+  await assertSucceeds(setDoc(ref, profile('alice', 'alice@example.com')));
+  await assertFails(updateDoc(ref, { customerId: 'bob' }));
+  await assertFails(updateDoc(ref, { extraData: 'not allowed' }));
+  await assertFails(updateDoc(ref, { isAdmin: true }));
+  await assertFails(updateDoc(ref, { fullName: 'x'.repeat(121) }));
+  await assertFails(updateDoc(ref, { createdAt: new Date(0) }));
 });
 
 test('customers create only pending and unconfirmed service requests', async () => {

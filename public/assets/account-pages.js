@@ -1,4 +1,4 @@
-import {configured,client,currentUser,isVerified,primaryProvider,providerIds,ensureProfile,getProfile,saveOnboarding,updateProfile,requestService,getMyOrders,isAdmin,allCustomers,allOrders,updateOrder,logout,categories,goals,referrals,services,safe,dateText,errorText} from './auth-core.js?v=20261102-auth6';
+import {configured,client,currentUser,isVerified,primaryProvider,providerIds,ensureProfile,getProfile,saveOnboarding,updateProfile,requestService,getMyOrders,isAdmin,allCustomers,allOrders,updateOrder,logout,categories,goals,referrals,services,safe,dateText,errorText} from './auth-core.js?v=20261102-auth7';
 const $=id=>document.getElementById(id);
 const page=document.body.dataset.accountPage;
 const display=(id,text,type='')=>{const box=$(id);if(!box)return;box.textContent=text;box.className='mi-status '+type;box.setAttribute('role',type==='error'?'alert':'status')};
@@ -8,8 +8,8 @@ const pendingNext=()=>{try{const v=sessionStorage.getItem('mi-postlogin-next');i
 const afterAuth=()=>{const t=pendingNext();if(t)sessionStorage.removeItem('mi-postlogin-next');return t||'dashboard.html'};
 const requireAccount=async()=>{
  const u=await currentUser();
- if(!u){redirect('account.html?mode=login&auth=20261102-6');return null}
- if(!isVerified(u)){redirect('account.html?mode=login&auth=20261102-6&verify=1');return null}
+ if(!u){redirect('account.html?mode=login&auth=20261102-7');return null}
+ if(!isVerified(u)){redirect('account.html?mode=login&auth=20261102-7&verify=1');return null}
  return u;
 };
 const options=(items,prompt='Select an option')=>`<option value="">${safe(prompt)}</option>`+items.map(i=>`<option value="${safe(i)}">${safe(i)}</option>`).join('');
@@ -71,7 +71,7 @@ async function authPage(){
  const verification=()=>{
   form.classList.add('mi-hidden');$('mi-provider-section').classList.add('mi-hidden');$('mi-verify-section').classList.remove('mi-hidden');
   $('mi-verify-email').textContent=auth.currentUser?.email||'your email';
-  display('account-status','Your email is not verified. Open the Firebase verification email, follow its link, then select “I Have Verified My Email”.');
+  display('account-status','You are signed in. Verify your email to unlock your private dashboard and project requests.');
  };
  const advance=async u=>{
   if(!isVerified(u)){verification();return}
@@ -93,8 +93,9 @@ async function authPage(){
    if(mode==='register'){
     const r=await a.createUserWithEmailAndPassword(auth,email,pass);
     await a.updateProfile(r.user,{displayName:$('mi-name').value.trim().slice(0,120)});
+    await ensureProfile(r.user);
     verification();
-    try{await a.sendEmailVerification(r.user,{url:new URL('account.html?verify=1',location.href).href});display('account-status','Account created. Verification email sent. Please check your inbox and spam folder.','success')}
+    try{await a.sendEmailVerification(r.user,{url:new URL('account.html?verify=1',location.href).href});display('account-status','Account created and signed in. Verification email sent—open it to unlock your dashboard.','success')}
     catch(emailError){display('account-status',`Account created, but verification email could not be sent: ${errorText(emailError)}. Use Resend below.`,'error')}
    }else{
     const r=await a.signInWithEmailAndPassword(auth,email,pass);await advance(r.user);
@@ -130,13 +131,7 @@ async function authPage(){
   const provider=new a.GoogleAuthProvider();
   provider.setCustomParameters({prompt:'select_account'});
   display('account-status','Connecting securely to Google…');
-  try{const r=await a.signInWithPopup(auth,provider);await advance(r.user)}
-  catch(err){
-   if(['auth/popup-blocked','auth/operation-not-supported-in-this-environment','auth/internal-error'].includes(err.code)){
-    try{await a.signInWithRedirect(auth,provider);return}catch(redirectErr){display('account-status',errorText(redirectErr),'error');return}
-   }
-   display('account-status',errorText(err),'error')
-  }
+  try{await a.signInWithRedirect(auth,provider)}catch(err){display('account-status',errorText(err),'error')}
  };
  $('mi-google').addEventListener('click',signProvider);
 }

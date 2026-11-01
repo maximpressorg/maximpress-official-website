@@ -1,5 +1,5 @@
 /** Admin-only moderation for verified customer comments. Access enforced by Firestore rules. */
-import {configured,currentUser,isAdmin,client} from './auth-core.js?v=20261102-auth6';
+import {configured,currentUser,isAdmin,client} from './auth-core.js?v=20261102-auth7';
 if(configured){(async()=>{
  const user=await currentUser();if(!user||!await isAdmin(user))return;
  const main=document.querySelector('.mi-wrap');if(!main)return;

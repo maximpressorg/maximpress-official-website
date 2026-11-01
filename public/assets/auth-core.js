@@ -1,6 +1,6 @@
 /** MaxImpress customer portal — Firebase 13.1.0 modular browser SDK.
  * No passwords, service-account credentials, or administrative claims live here. */
-import { firebaseConfig, appleSignInEnabled } from './firebase-config.js?v=20261102-auth6';
+import { firebaseConfig, appleSignInEnabled } from './firebase-config.js?v=20261102-auth7';
 export { appleSignInEnabled };
 export const configured = ['apiKey','authDomain','projectId','appId'].every(k =>
   typeof firebaseConfig[k] === 'string' && firebaseConfig[k].length > 8 && !firebaseConfig[k].startsWith('REPLACE_'));
@@ -40,7 +40,7 @@ export async function getProfile(uid) {
   return s.exists()?s.data():null;
 }
 export async function ensureProfile(u){
-  if(!isVerified(u)) throw new Error('Please verify your email before using your account.');
+  if(!u) throw new Error('Sign in before creating your customer profile.');
   const {db,fs}=await client();
   const ref=fs.doc(db,'customers',u.uid);
   const old=await fs.getDoc(ref);
@@ -104,7 +104,7 @@ export function errorText(e){
   'auth/operation-not-supported-in-this-environment':'Google sign-in is not supported inside this embedded browser. Open the website in Chrome, Edge, or Safari.',
   'auth/unauthorized-domain':'This website domain is not yet authorized in Firebase Authentication.',
   'auth/operation-not-allowed':'This sign-in method is not yet enabled in Firebase Authentication.',
-  'permission-denied':'The database rejected this operation. Check your email verification and Firestore security rules.'
+  'permission-denied':'Your secure customer profile could not be opened. Please reload once; if the problem continues, contact MaxImpress support.'
  };
  return map[e?.code]||String(e?.message||'Something went wrong. Please try again.').slice(0,250);
 }

@@ -1,4 +1,8 @@
 rules_version = '2';
+// Assumed private data model:
+// customers/{uid}: customer identity/profile fields defined by profileKeys().
+// orders/{id}: customer-owned service request and administrator-managed status.
+// reviewVotes, reviewComments, reviewSubmissions: verified customer feedback.
 service cloud.firestore {
   match /databases/{database}/documents {
     function signedIn() { return request.auth != null; }
@@ -6,6 +10,7 @@ service cloud.firestore {
     function isAdmin() {
       return verified() && 'admin' in request.auth.token && request.auth.token.admin == true;
     }
+    function isSelf(uid) { return signedIn() && request.auth.uid == uid; }
     function isOwner(uid) { return verified() && request.auth.uid == uid; }
     function profileKeys() { return [
       'customerId','fullName','email','photoURL','provider','linkedProviders',
@@ -47,8 +52,11 @@ service cloud.firestore {
           (request.resource.data.paymentReference is string && request.resource.data.paymentReference.size() <= 120));
     }
     match /customers/{uid} {
-      allow get, list: if isOwner(uid) || isAdmin();
-      allow create: if isOwner(uid) &&
+      // Authentication creates a private profile immediately. Verification is
+      // still mandatory for every business/review operation below.
+      allow get: if isSelf(uid) || isAdmin();
+      allow list: if isAdmin();
+      allow create: if isSelf(uid) &&
         request.resource.data.customerId == uid &&
         request.resource.data.email == request.auth.token.email &&
         request.resource.data.createdAt == request.time &&
