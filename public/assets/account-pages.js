@@ -1,4 +1,4 @@
-import {configured,appleSignInEnabled,client,currentUser,isVerified,primaryProvider,providerIds,ensureProfile,getProfile,saveOnboarding,updateProfile,requestService,getMyOrders,isAdmin,allCustomers,allOrders,updateOrder,logout,categories,goals,referrals,services,safe,dateText,errorText} from './auth-core.js?v=20261101-auth4';
+import {configured,client,currentUser,isVerified,primaryProvider,providerIds,ensureProfile,getProfile,saveOnboarding,updateProfile,requestService,getMyOrders,isAdmin,allCustomers,allOrders,updateOrder,logout,categories,goals,referrals,services,safe,dateText,errorText} from './auth-core.js?v=20261102-auth5';
 const $=id=>document.getElementById(id);
 const page=document.body.dataset.accountPage;
 const display=(id,text,type='')=>{const box=$(id);if(!box)return;box.textContent=text;box.className='mi-status '+type;box.setAttribute('role',type==='error'?'alert':'status')};
@@ -8,8 +8,8 @@ const pendingNext=()=>{try{const v=sessionStorage.getItem('mi-postlogin-next');i
 const afterAuth=()=>{const t=pendingNext();if(t)sessionStorage.removeItem('mi-postlogin-next');return t||'dashboard.html'};
 const requireAccount=async()=>{
  const u=await currentUser();
- if(!u){redirect('account.html?mode=login&auth=20261101-4');return null}
- if(!isVerified(u)){redirect('account.html?mode=login&auth=20261101-4&verify=1');return null}
+ if(!u){redirect('account.html?mode=login&auth=20261102-5');return null}
+ if(!isVerified(u)){redirect('account.html?mode=login&auth=20261102-5&verify=1');return null}
  return u;
 };
 const options=(items,prompt='Select an option')=>`<option value="">${safe(prompt)}</option>`+items.map(i=>`<option value="${safe(i)}">${safe(i)}</option>`).join('');
@@ -126,11 +126,10 @@ async function authPage(){
   catch(err){if(err.code==='auth/user-not-found')display('account-status','If an account is eligible, password reset instructions have been sent.','success');else display('account-status',errorText(err),'error')}
   finally{setBusy(btn,false)}
  });
- const signProvider=async kind=>{
-  const provider=kind==='google'?new a.GoogleAuthProvider():new a.OAuthProvider('apple.com');
-  if(kind==='google')provider.setCustomParameters({prompt:'select_account'});
-  if(kind==='apple'){provider.addScope('email');provider.addScope('name')}
-  display('account-status',`Connecting securely to ${kind==='google'?'Google':'Apple'}…`);
+ const signProvider=async()=>{
+  const provider=new a.GoogleAuthProvider();
+  provider.setCustomParameters({prompt:'select_account'});
+  display('account-status','Connecting securely to Google…');
   try{const r=await a.signInWithPopup(auth,provider);await advance(r.user)}
   catch(err){
    if(['auth/popup-blocked','auth/operation-not-supported-in-this-environment','auth/internal-error'].includes(err.code)){
@@ -139,8 +138,7 @@ async function authPage(){
    display('account-status',errorText(err),'error')
   }
  };
- $('mi-google').addEventListener('click',()=>signProvider('google'));
- if(appleSignInEnabled){$('mi-apple').disabled=false;$('mi-apple').querySelector('span').textContent='Continue with Apple';$('mi-apple').addEventListener('click',()=>signProvider('apple'))}
+ $('mi-google').addEventListener('click',signProvider);
 }
 async function onboardingPage(){
  const u=await requireAccount();if(!u)return;
@@ -217,15 +215,13 @@ async function settingsPage(){
   try{await a.sendPasswordResetEmail(auth,u.email);display('account-status','If eligible, a password reset link has been emailed to your account.','success')}
   catch(err){display('account-status',errorText(err),'error')}
  });
- const linkProvider=async kind=>{
-  const provider=kind==='google'?new a.GoogleAuthProvider():new a.OAuthProvider('apple.com');
-  if(kind==='google')provider.setCustomParameters({prompt:'select_account'});
-  if(kind==='apple'){provider.addScope('email');provider.addScope('name')}
+ const linkProvider=async()=>{
+  const provider=new a.GoogleAuthProvider();
+  provider.setCustomParameters({prompt:'select_account'});
   try{await a.linkWithPopup(u,provider);const {db,fs}=await client();await fs.updateDoc(fs.doc(db,'customers',u.uid),{linkedProviders:providerIds(u)});$('mi-auth-methods').textContent=providerIds(u).join(', ');display('account-status','Sign-in method linked securely to your existing account.','success')}
   catch(err){display('account-status',errorText(err),'error')}
  };
- $('mi-link-google').addEventListener('click',()=>linkProvider('google'));
- if(appleSignInEnabled){$('mi-link-apple').disabled=false;$('mi-link-apple').addEventListener('click',()=>linkProvider('apple'))}
+ $('mi-link-google').addEventListener('click',linkProvider);
  if(await isAdmin(u))$('mi-settings-admin').classList.remove('mi-hidden');
  $('mi-loading')?.remove();$('mi-settings-body').classList.remove('mi-hidden');
  $('mi-settings-logout').addEventListener('click',logout);

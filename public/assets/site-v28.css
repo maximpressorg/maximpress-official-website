@@ -16,15 +16,24 @@ html.mi-locked body{visibility:hidden!important}html.mi-locked{background:#100e2
 .mi-consent-pop a{font-size:11px;color:#7349c1;text-decoration:underline;display:inline-block;margin-top:12px}
 .mi-privacy-choice{font-size:11px!important;cursor:pointer;text-decoration:underline!important}
 /* Official-style, focused account access card. Keep backend field IDs untouched. */
-body[data-account-page=auth] .mi-main{background:radial-gradient(circle at 15% 2%,#eee5fa,transparent 35%),linear-gradient(150deg,#f9f8fe,#f4f4fb);padding:42px 0 70px}
-body[data-account-page=auth] .mi-auth-layout{grid-template-columns:minmax(0,465px);justify-content:center;max-width:500px;gap:0}
-body[data-account-page=auth] .mi-auth-card{padding:34px 39px;border-radius:21px;box-shadow:0 18px 70px #28204e19}
+body[data-account-page=auth] .mi-main{background:radial-gradient(circle at 12% 0%,#eee5fa,transparent 34%),radial-gradient(circle at 93% 90%,#f9dff0,transparent 28%),linear-gradient(150deg,#fbfaff,#f4f4fb);padding:48px 0 78px}
+body[data-account-page=auth] .mi-auth-layout{grid-template-columns:minmax(0,1.02fr) minmax(340px,.78fr);max-width:990px;gap:24px;align-items:stretch}
+body[data-account-page=auth] .mi-auth-card{padding:38px 42px;border-radius:24px;box-shadow:0 24px 80px #28204e1c}
 body[data-account-page=auth] .mi-auth-card h1{font-size:clamp(27px,3vw,35px);margin:5px 0 7px;letter-spacing:-.04em}
 body[data-account-page=auth] .mi-auth-card>p{font-size:13px;margin-bottom:21px;color:#687187}
-body[data-account-page=auth] .mi-aside{display:none}
+body[data-account-page=auth] .mi-aside{display:flex;border:0;padding:44px;background:radial-gradient(circle at 100% 0%,#793ec0,#211844 58%,#111a34);box-shadow:0 24px 80px #21163c26}
+body[data-account-page=auth] .mi-aside:after{content:'';position:absolute;right:-70px;bottom:-70px;width:220px;height:220px;border:1px solid #ffffff20;border-radius:50%;box-shadow:0 0 0 34px #ffffff08,0 0 0 68px #ffffff05}
+body[data-account-page=auth] .mi-aside>*{position:relative;z-index:1}
+body[data-account-page=auth] .mi-aside img{width:90px;height:90px;margin-bottom:24px;filter:drop-shadow(0 12px 22px #0006)}
+body[data-account-page=auth] .mi-aside p{font-size:14px;line-height:1.7}
+body[data-account-page=auth] .mi-auth-benefits{list-style:none;padding:0;margin:18px 0 24px;display:grid;gap:12px;color:#f2ebff;font-size:13px;font-weight:700}
+body[data-account-page=auth] .mi-auth-benefits li{display:flex;align-items:center;gap:10px}
+body[data-account-page=auth] .mi-auth-benefits li:before{content:'✓';width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:#ffffff17;color:#ffb8de;font-weight:900}
+body[data-account-page=auth] .mi-auth-trust{margin-top:auto;background:#ffffff10;color:#e9dcff;border-color:#dfb5ff}
 body[data-account-page=auth] .mi-tabbar{margin-bottom:20px}
 body[data-account-page=auth] .mi-form{gap:12px}
-body[data-account-page=auth] .mi-provider{padding:12px 15px;border-radius:10px}
+body[data-account-page=auth] .mi-provider{padding:14px 16px;border-radius:12px;box-shadow:0 8px 24px #2b21570d;transition:border-color .2s,box-shadow .2s,transform .2s}
+body[data-account-page=auth] .mi-provider:hover{border-color:#b9a7e4;box-shadow:0 10px 28px #4d36781c;transform:translateY(-1px)}
 body[data-account-page=auth] .mi-or{margin:18px 0 14px}
 body[data-account-page=auth] .mi-auth-foot{margin:13px 0 0;font-size:10px;line-height:1.5}
 body[data-account-page=auth] #mi-provider-section{margin-bottom:16px}
@@ -34,7 +43,8 @@ body[data-account-page=auth] .mi-auth-brand{text-align:center;margin:0 auto 24px
 body[data-account-page=auth] .mi-auth-brand img{display:block;margin:0 auto 6px;width:67px;height:67px;object-fit:contain}
 body[data-account-page=auth] .mi-auth-brand strong{font-weight:900;font-size:15px;color:#332858}
 body[data-account-page=auth] .mi-auth-brand small{display:block;font-size:10px;color:#827395;letter-spacing:.12em}
-@media(max-width:560px){body[data-account-page=auth] .mi-auth-card{padding:24px 20px;border-radius:17px}body[data-account-page=auth] .mi-main{padding:20px 0 45px}}
+@media(max-width:960px){body[data-account-page=auth] .mi-auth-layout{grid-template-columns:1fr;max-width:540px}body[data-account-page=auth] .mi-aside{display:none}}
+@media(max-width:560px){body[data-account-page=auth] .mi-auth-card{padding:26px 21px;border-radius:18px}body[data-account-page=auth] .mi-main{padding:20px 0 45px}}
 /* Simple, fast intro: logo, name and tagline without decorative motion. */
 #splash.brand-intro{background:#111126;transition:opacity .18s ease,visibility .18s ease}
 #splash.brand-intro::before,#splash.brand-intro::after,#splash.brand-intro .brand-intro-glow,#splash.brand-intro .brand-intro-rule{display:none}

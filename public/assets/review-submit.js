@@ -1,5 +1,5 @@
 /** Genuine feedback submission, customer identity and administrator moderation. */
-import {configured,currentUser,isVerified,client} from './auth-core.js?v=20261101-auth4';
+import {configured,currentUser,isVerified,client} from './auth-core.js?v=20261102-auth5';
 const form=document.getElementById('review-submission-form');
 const status=document.getElementById('review-form-status');
 const grid=document.getElementById('mi-community-grid');

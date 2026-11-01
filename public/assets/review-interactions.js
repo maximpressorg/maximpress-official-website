@@ -1,5 +1,5 @@
 /** V2.8 authentic signed-in reactions, gated comments. No invented seed metrics. */
-import {configured,client,currentUser,isVerified,safe} from './auth-core.js?v=20261101-auth4';
+import {configured,client,currentUser,isVerified,safe} from './auth-core.js?v=20261102-auth5';
 let panels=[...document.querySelectorAll('.mi-review-actions[data-review-id]')];
 if(panels.length){
  const VALID=new Set(panels.map(e=>e.dataset.reviewId));

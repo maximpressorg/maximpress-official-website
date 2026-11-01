@@ -1,5 +1,5 @@
 /** MaxImpress V2.8 navigation experience. Static HTML is not a server-side access boundary. */
-import {configured,currentUser,isVerified} from './auth-core.js?v=20261101-auth4';
+import {configured,currentUser,isVerified} from './auth-core.js?v=20261102-auth5';
 const prefix=document.querySelector('meta[name="mi-site-prefix"]')?.content||'';
 // Marketing and informational pages stay public. Only customer actions and
 // private account workspaces require authentication.
@@ -8,7 +8,7 @@ const rawPage=location.pathname.split('/').pop()||'index.html';
 const blocked=protectedPages.has(rawPage);
 const safeTarget = href=>{try{const u=new URL(href,location.href);if(u.origin!==location.origin||!u.pathname.endsWith('.html'))return null;return u;}catch{return null}};
 let granted=false;
-function urlFor(mode,u){const next=u?u.pathname+u.search+u.hash:'';return prefix+'account.html?mode='+mode+'&auth=20261101-4'+(next?'&next='+encodeURIComponent(next):'')}
+function urlFor(mode,u){const next=u?u.pathname+u.search+u.hash:'';return prefix+'account.html?mode='+mode+'&auth=20261102-5'+(next?'&next='+encodeURIComponent(next):'')}
 function modal(target){
   document.querySelector('.mi-access-panel')?.remove();
   const back=document.createElement('div');back.className='mi-access-panel';back.setAttribute('role','presentation');
@@ -21,9 +21,6 @@ function modal(target){
   const esc=e=>{if(e.key==='Escape'){close();document.removeEventListener('keydown',esc)}};document.addEventListener('keydown',esc);
 }
 // Public marketing links remain available without an account.
-function handleHomeCTAs(){const home=document.body.classList.contains('home-page');if(!home)return;
-  document.querySelectorAll('[data-mi-guest-cta]').forEach(el=>{if(granted){el.href=el.dataset.miMemberHref;el.textContent=el.dataset.miMemberText}else{el.href=el.dataset.miGuestHref;el.textContent=el.dataset.miGuestText}})
-}
 function reveal(){document.documentElement.classList.remove('mi-locked');document.documentElement.classList.add('mi-authorized')}
 const ready=(async()=>{
  if(configured){try{const u=await currentUser();granted=isVerified(u)}catch{granted=false}}
@@ -31,7 +28,7 @@ const ready=(async()=>{
   const dst=location.pathname+location.search+location.hash;
   location.replace(urlFor('register',new URL(dst,location.origin)));return;
  }
- reveal();handleHomeCTAs();
+ reveal();
  document.addEventListener('click',e=>{if(granted||e.defaultPrevented||e.button!==0||e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;
    const a=e.target.closest?.('a[href]');if(!a||a.hasAttribute('download'))return;
    const u=safeTarget(a.href);if(!u)return;
