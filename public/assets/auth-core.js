@@ -1,6 +1,6 @@
 /** MaxImpress customer portal — Firebase 13.1.0 modular browser SDK.
  * No passwords, service-account credentials, or administrative claims live here. */
-import { firebaseConfig, appleSignInEnabled } from './firebase-config.js?v=20261102-auth7';
+import { firebaseConfig, appleSignInEnabled } from './firebase-config.js?v=20261102-auth8';
 export { appleSignInEnabled };
 export const configured = ['apiKey','authDomain','projectId','appId'].every(k =>
   typeof firebaseConfig[k] === 'string' && firebaseConfig[k].length > 8 && !firebaseConfig[k].startsWith('REPLACE_'));
