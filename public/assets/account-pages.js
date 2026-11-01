@@ -1,4 +1,4 @@
-import {configured,appleSignInEnabled,client,currentUser,isVerified,primaryProvider,providerIds,ensureProfile,getProfile,saveOnboarding,updateProfile,requestService,getMyOrders,isAdmin,allCustomers,allOrders,updateOrder,logout,categories,goals,referrals,services,safe,dateText,errorText} from './auth-core.js';
+import {configured,appleSignInEnabled,client,currentUser,isVerified,primaryProvider,providerIds,ensureProfile,getProfile,saveOnboarding,updateProfile,requestService,getMyOrders,isAdmin,allCustomers,allOrders,updateOrder,logout,categories,goals,referrals,services,safe,dateText,errorText} from './auth-core.js?v=20261101-auth4';
 const $=id=>document.getElementById(id);
 const page=document.body.dataset.accountPage;
 const display=(id,text,type='')=>{const box=$(id);if(!box)return;box.textContent=text;box.className='mi-status '+type;box.setAttribute('role',type==='error'?'alert':'status')};
@@ -8,8 +8,8 @@ const pendingNext=()=>{try{const v=sessionStorage.getItem('mi-postlogin-next');i
 const afterAuth=()=>{const t=pendingNext();if(t)sessionStorage.removeItem('mi-postlogin-next');return t||'dashboard.html'};
 const requireAccount=async()=>{
  const u=await currentUser();
- if(!u){redirect('account.html?mode=login');return null}
- if(!isVerified(u)){redirect('account.html?mode=login&verify=1');return null}
+ if(!u){redirect('account.html?mode=login&auth=20261101-4');return null}
+ if(!isVerified(u)){redirect('account.html?mode=login&auth=20261101-4&verify=1');return null}
  return u;
 };
 const options=(items,prompt='Select an option')=>`<option value="">${safe(prompt)}</option>`+items.map(i=>`<option value="${safe(i)}">${safe(i)}</option>`).join('');

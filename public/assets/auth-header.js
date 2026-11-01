@@ -1,5 +1,5 @@
 /** V2.8: guest login/signup first; verified accounts regain project link. */
-import {configured,client,isVerified,logout,getProfile,safe} from './auth-core.js';
+import {configured,client,isVerified,logout,getProfile,safe} from './auth-core.js?v=20261101-auth4';
 const desktop=document.querySelector('.mi-account-nav'),mobile=document.querySelector('.mi-mobile-account');
 const prefix=document.querySelector('meta[name="mi-site-prefix"]')?.content||'';
 function show(u,p){
