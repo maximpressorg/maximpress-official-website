@@ -1,6 +1,6 @@
 /** MaxImpress customer portal — Firebase 13.1.0 modular browser SDK.
  * No passwords, service-account credentials, or administrative claims live here. */
-import { firebaseConfig, appleSignInEnabled } from './firebase-config.js?v=20261102-auth11';
+import { firebaseConfig, appleSignInEnabled } from './firebase-config.js?v=20261102-auth12';
 export { appleSignInEnabled };
 export const configured = ['apiKey','authDomain','projectId','appId'].every(k =>
   typeof firebaseConfig[k] === 'string' && firebaseConfig[k].length > 8 && !firebaseConfig[k].startsWith('REPLACE_'));
@@ -94,14 +94,14 @@ export const safe = value => String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp
 export const dateText = ts => ts?.toDate?.()?.toLocaleDateString('en-GB',{year:'numeric',month:'short',day:'numeric'})||'—';
 export function errorText(e){
  const map={
-  'auth/invalid-credential':'Incorrect email or password, or the account uses another sign-in method.',
+  'auth/invalid-credential':'This email/password combination is not available. If this Gmail account was created with Google, use “Continue securely with Google” instead. You can also use Forgot Password for a separate email/password account.',
   'auth/email-already-in-use':'An account already exists with this email. Log in or use your original provider.',
   'auth/account-exists-with-different-credential':'This email is already linked to another sign-in method. Sign in using that method, then link the new provider in Account Settings.',
   'auth/weak-password':"Password must have at least 6 characters or meet any stronger policy configured in Firebase.",
   'auth/too-many-requests':'Too many attempts. Please try again later.',
   'auth/popup-closed-by-user':'Sign-in was cancelled.',
   'auth/popup-blocked':'Your browser blocked the sign-in popup. Allow popups and retry.',
-  'auth/internal-error':'Google sign-in was interrupted before the secure account chooser opened. Reload this page and try again.',
+  'auth/internal-error':'Google could not open in this browser using the first method. The page will automatically try the secure redirect method.',
   'auth/operation-not-supported-in-this-environment':'Google sign-in is not supported inside this embedded browser. Open the website in Chrome, Edge, or Safari.',
   'auth/unauthorized-domain':'This website domain is not yet authorized in Firebase Authentication.',
   'auth/operation-not-allowed':'This sign-in method is not yet enabled in Firebase Authentication.',
