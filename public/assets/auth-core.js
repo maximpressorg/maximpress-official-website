@@ -1,6 +1,6 @@
 /** MaxImpress customer portal — Firebase 13.1.0 modular browser SDK.
  * No passwords, service-account credentials, or administrative claims live here. */
-import { firebaseConfig, appleSignInEnabled } from './firebase-config.js?v=20261102-auth12';
+import { firebaseConfig, appleSignInEnabled } from './firebase-config.js?v=20261102-auth13';
 export { appleSignInEnabled };
 export const configured = ['apiKey','authDomain','projectId','appId'].every(k =>
   typeof firebaseConfig[k] === 'string' && firebaseConfig[k].length > 8 && !firebaseConfig[k].startsWith('REPLACE_'));
@@ -101,7 +101,7 @@ export function errorText(e){
   'auth/too-many-requests':'Too many attempts. Please try again later.',
   'auth/popup-closed-by-user':'Sign-in was cancelled.',
   'auth/popup-blocked':'Your browser blocked the sign-in popup. Allow popups and retry.',
-  'auth/internal-error':'Google could not open in this browser using the first method. The page will automatically try the secure redirect method.',
+  'auth/internal-error':'Google sign-in could not connect. Please retry Continue securely with Google.',
   'auth/operation-not-supported-in-this-environment':'Google sign-in is not supported inside this embedded browser. Open the website in Chrome, Edge, or Safari.',
   'auth/unauthorized-domain':'This website domain is not yet authorized in Firebase Authentication.',
   'auth/operation-not-allowed':'This sign-in method is not yet enabled in Firebase Authentication.',

@@ -1,4 +1,4 @@
-import {configured,client,currentUser,isVerified,primaryProvider,providerIds,ensureProfile,getProfile,saveOnboarding,updateProfile,requestService,getMyOrders,isAdmin,allCustomers,allOrders,updateOrder,logout,categories,goals,referrals,services,safe,dateText,errorText} from './auth-core.js?v=20261102-auth12';
+import {configured,client,currentUser,isVerified,primaryProvider,providerIds,ensureProfile,getProfile,saveOnboarding,updateProfile,requestService,getMyOrders,isAdmin,allCustomers,allOrders,updateOrder,logout,categories,goals,referrals,services,safe,dateText,errorText} from './auth-core.js?v=20261102-auth13';
 const $=id=>document.getElementById(id);
 const page=document.body.dataset.accountPage;
 const display=(id,text,type='')=>{const box=$(id);if(!box)return;box.textContent=text;box.className='mi-status '+type;box.setAttribute('role',type==='error'?'alert':'status')};
@@ -140,7 +140,6 @@ async function authPage(){
    await advance(result.user);
   }catch(err){
    if(['auth/popup-blocked','auth/operation-not-supported-in-this-environment','auth/internal-error'].includes(err?.code)){
-    display('account-status','This browser requires the secure redirect method. Continuing to Google…');
     try{await a.signInWithRedirect(auth,provider);return}catch(redirectError){display('account-status',errorText(redirectError),'error')}
    }else display('account-status',errorText(err),'error');
   }finally{setBusy(button,false)}

@@ -1,5 +1,5 @@
 /** Public-first navigation: visitors browse freely; project actions request an account. */
-import {configured,client,isVerified,logout,getProfile,safe} from './auth-core.js?v=20261102-auth12';
+import {configured,client,isVerified,logout,getProfile,safe} from './auth-core.js?v=20261102-auth13';
 const desktop=document.querySelector('.mi-account-nav'),mobile=document.querySelector('.mi-mobile-account');
 const prefix=document.querySelector('meta[name="mi-site-prefix"]')?.content||'';
 function show(u,p){
