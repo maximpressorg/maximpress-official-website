@@ -1,4 +1,4 @@
-name: Validate MaxImpress security and website
+name: Validate MaxImpress static website
 
 on:
   pull_request:
@@ -19,15 +19,9 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: 21
       - name: Install test dependencies
         run: npm ci --ignore-scripts
       - name: Audit dependencies
         run: npm audit --audit-level=high
       - name: Validate JavaScript and internal links
         run: npm test
-      - name: Test Firestore authorization rules
-        run: npm run test:rules

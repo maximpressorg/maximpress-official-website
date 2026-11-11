@@ -11,14 +11,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Verify project values configured before preview
+      - name: Verify the static website package before preview
         shell: bash
         run: |
           test -n "${{ vars.FIREBASE_PROJECT_ID }}"
-          ! grep -q 'REPLACE_WITH_' public/assets/firebase-config.js
-          ! grep -q 'REPLACE_WITH_' public/assets/analytics-config.js
-          ! grep -q 'https://maximpress.pages.dev' public/sitemap.xml
-          ! grep -q 'https://maximpress.pages.dev' public/index.html
+          test -f public/index.html
+          test -f public/assets/site.css
+          test -f public/assets/site.js
+          test ! -f public/account.html
+          test ! -f public/admin.html
+          test ! -f public/dashboard.html
       - name: Deploy safe preview channel
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:

@@ -1,0 +1,452 @@
+[
+  {
+    "id": "plan-brands-1",
+    "detail": "details-plan-brands-1.html",
+    "title": "Brand Social Management",
+    "price": "$600 /mo",
+    "service": "Brands",
+    "summary": [
+      "Monthly content strategy/publishing calendar",
+      "Captioning/scheduling/adaptation from client materials",
+      "Profile optimization/brand alignment/organic audience development",
+      "Engagement guidance within scope"
+    ],
+    "all_inclusions": [
+      "Monthly content strategy/publishing calendar",
+      "Captioning/scheduling/adaptation from client materials",
+      "Profile optimization/brand alignment/organic audience development",
+      "Engagement guidance within scope",
+      "Performance review and refinements"
+    ],
+    "url": "inquiry.html?service=Brands&plan=Brand+Social+Management&price=%24600+%2Fmo",
+    "source_page": "service-brands.html"
+  },
+  {
+    "id": "plan-brands-2",
+    "detail": "details-plan-brands-2.html",
+    "title": "Brand Growth & Marketing",
+    "price": "$1,500 /mo",
+    "service": "Brands",
+    "summary": [
+      "Multi-platform organic management",
+      "Content/publishing/audience development",
+      "Paid social planning/setup/management/optimization",
+      "Targeting/monitoring/reporting"
+    ],
+    "all_inclusions": [
+      "Multi-platform organic management",
+      "Content/publishing/audience development",
+      "Paid social planning/setup/management/optimization",
+      "Targeting/monitoring/reporting",
+      "Creative adaptations and organic+paid alignment"
+    ],
+    "url": "inquiry.html?service=Brands&plan=Brand+Growth+%26+Marketing&price=%241%2C500+%2Fmo",
+    "source_page": "service-brands.html"
+  },
+  {
+    "id": "plan-creator-1",
+    "detail": "details-plan-creator-1.html",
+    "title": "Creator Foundation",
+    "price": "$500 /mo",
+    "service": "Content Creators & Public Figures",
+    "summary": [
+      "X profile positioning, publishing, posting strategy, audience development, relevant verified/professional connection building",
+      "Instagram account management and reels/posts from client-provided content, captions/hooks, scheduling/publishing",
+      "Monthly content/performance direction",
+      "Cross-platform identity consistency"
+    ],
+    "all_inclusions": [
+      "X profile positioning, publishing, posting strategy, audience development, relevant verified/professional connection building",
+      "Instagram account management and reels/posts from client-provided content, captions/hooks, scheduling/publishing",
+      "Monthly content/performance direction",
+      "Cross-platform identity consistency"
+    ],
+    "url": "inquiry.html?service=Content+Creators+%26+Public+Figures&plan=Creator+Foundation&price=%24500+%2Fmo",
+    "source_page": "service-creator.html"
+  },
+  {
+    "id": "plan-creator-2",
+    "detail": "details-plan-creator-2.html",
+    "title": "Creator Growth Ecosystem",
+    "price": "$1,000 /mo",
+    "service": "Content Creators & Public Figures",
+    "summary": [
+      "Everything in Creator Foundation",
+      "YouTube channel publishing/management from agreed client-provided videos, titles/descriptions/uploads",
+      "Portfolio website setup at onboarding",
+      "Basic website maintenance within agreed scope"
+    ],
+    "all_inclusions": [
+      "Everything in Creator Foundation",
+      "YouTube channel publishing/management from agreed client-provided videos, titles/descriptions/uploads",
+      "Portfolio website setup at onboarding",
+      "Basic website maintenance within agreed scope",
+      "Cross-platform repurposing/adaptation"
+    ],
+    "url": "inquiry.html?service=Content+Creators+%26+Public+Figures&plan=Creator+Growth+Ecosystem&price=%241%2C000+%2Fmo",
+    "source_page": "service-creator.html"
+  },
+  {
+    "id": "plan-creator-3",
+    "detail": "details-plan-creator-3.html",
+    "title": "Complete Creator Management",
+    "price": "$1,500 /mo",
+    "service": "Content Creators & Public Figures",
+    "summary": [
+      "Core platform management",
+      "Portfolio website and agreed maintenance",
+      "Cross-platform calendar/publishing",
+      "Audience and professional connection development"
+    ],
+    "all_inclusions": [
+      "Core platform management",
+      "Portfolio website and agreed maintenance",
+      "Cross-platform calendar/publishing",
+      "Audience and professional connection development",
+      "Performance review and optimization"
+    ],
+    "url": "inquiry.html?service=Content+Creators+%26+Public+Figures&plan=Complete+Creator+Management&price=%241%2C500+%2Fmo",
+    "source_page": "service-creator.html"
+  },
+  {
+    "id": "plan-facebook-1",
+    "detail": "details-plan-facebook-1.html",
+    "title": "Facebook Publishing Support",
+    "price": "$350 /mo",
+    "service": "Facebook Growth & Monetization",
+    "summary": [
+      "Page posting support",
+      "Content formatting & scheduling",
+      "Creative guidance for posts",
+      "Basic performance tracking"
+    ],
+    "all_inclusions": [
+      "Page posting support",
+      "Content formatting & scheduling",
+      "Creative guidance for posts",
+      "Basic performance tracking",
+      "Monthly coordination"
+    ],
+    "url": "inquiry.html?service=Facebook+Growth+%26+Monetization&plan=Facebook+Publishing+Support&price=%24350+%2Fmo",
+    "source_page": "service-facebook.html"
+  },
+  {
+    "id": "plan-facebook-2",
+    "detail": "details-plan-facebook-2.html",
+    "title": "Facebook Monetization Support",
+    "price": "$350 /mo",
+    "service": "Facebook Growth & Monetization",
+    "summary": [
+      "Monetization-oriented content flow",
+      "Posting and page support",
+      "Audience-facing page upkeep",
+      "Monthly reporting"
+    ],
+    "all_inclusions": [
+      "Monetization-oriented content flow",
+      "Posting and page support",
+      "Audience-facing page upkeep",
+      "Monthly reporting",
+      "Optimization suggestions"
+    ],
+    "url": "inquiry.html?service=Facebook+Growth+%26+Monetization&plan=Facebook+Monetization+Support&price=%24350+%2Fmo",
+    "source_page": "service-facebook.html"
+  },
+  {
+    "id": "plan-instagram-1",
+    "detail": "details-plan-instagram-1.html",
+    "title": "Reels Growth Package",
+    "price": "$350 /mo",
+    "service": "Instagram Content & Reels",
+    "summary": [
+      "20 custom reels/month",
+      "Viral content strategy",
+      "Trend implementation",
+      "Audio/music optimization"
+    ],
+    "all_inclusions": [
+      "20 custom reels/month",
+      "Viral content strategy",
+      "Trend implementation",
+      "Audio/music optimization",
+      "Performance tracking"
+    ],
+    "url": "inquiry.html?service=Instagram+Content+%26+Reels&plan=Reels+Growth+Package&price=%24350+%2Fmo",
+    "source_page": "service-instagram.html"
+  },
+  {
+    "id": "plan-instagram-2",
+    "detail": "details-plan-instagram-2.html",
+    "title": "Full Account Management",
+    "price": "$500 /mo",
+    "service": "Instagram Content & Reels",
+    "summary": [
+      "Complete content creation/posting",
+      "Community replies",
+      "Follower strategy",
+      "Monthly reporting"
+    ],
+    "all_inclusions": [
+      "Complete content creation/posting",
+      "Community replies",
+      "Follower strategy",
+      "Monthly reporting",
+      "Hashtag/trend research"
+    ],
+    "url": "inquiry.html?service=Instagram+Content+%26+Reels&plan=Full+Account+Management&price=%24500+%2Fmo",
+    "source_page": "service-instagram.html"
+  },
+  {
+    "id": "plan-intelligence-1",
+    "detail": "details-plan-intelligence-1.html",
+    "title": "Custom Social Intelligence",
+    "price": "Custom quote",
+    "service": "Custom Social Intelligence",
+    "summary": [
+      "Research public social posts and discussions",
+      "Find people/businesses/opportunities",
+      "Filter by niche/location/keywords",
+      "Organize leads/market insights"
+    ],
+    "all_inclusions": [
+      "Research public social posts and discussions",
+      "Find people/businesses/opportunities",
+      "Filter by niche/location/keywords",
+      "Organize leads/market insights"
+    ],
+    "url": "inquiry.html?service=Custom+Social+Intelligence&plan=Custom+Social+Intelligence&price=Custom+quote",
+    "source_page": "service-intelligence.html"
+  },
+  {
+    "id": "plan-organizations-1",
+    "detail": "details-plan-organizations-1.html",
+    "title": "Organization Social Management",
+    "price": "$800–$2,000 /mo",
+    "service": "Organizations",
+    "summary": [
+      "Planning/formatting/scheduling/publishing",
+      "Relevant audience and professional network growth",
+      "Platform distribution and account management",
+      "Approval-led organizational communication"
+    ],
+    "all_inclusions": [
+      "Planning/formatting/scheduling/publishing",
+      "Relevant audience and professional network growth",
+      "Platform distribution and account management",
+      "Approval-led organizational communication",
+      "Reporting and improvements"
+    ],
+    "url": "inquiry.html?service=Organizations&plan=Organization+Social+Management&price=%24800%E2%80%93%242%2C000+%2Fmo",
+    "source_page": "service-organizations.html"
+  },
+  {
+    "id": "plan-tiktok-1",
+    "detail": "details-plan-tiktok-1.html",
+    "title": "Viral Content Strategy",
+    "price": "$400 /mo",
+    "service": "TikTok Content & Management",
+    "summary": [
+      "20 custom video scripts",
+      "Trending-sound research",
+      "Hashtag strategy",
+      "Scheduling optimization"
+    ],
+    "all_inclusions": [
+      "20 custom video scripts",
+      "Trending-sound research",
+      "Hashtag strategy",
+      "Scheduling optimization",
+      "Weekly performance review"
+    ],
+    "url": "inquiry.html?service=TikTok+Content+%26+Management&plan=Viral+Content+Strategy&price=%24400+%2Fmo",
+    "source_page": "service-tiktok.html"
+  },
+  {
+    "id": "plan-tiktok-2",
+    "detail": "details-plan-tiktok-2.html",
+    "title": "Complete TikTok Management",
+    "price": "$650 /mo",
+    "service": "TikTok Content & Management",
+    "summary": [
+      "Daily content creation/posting",
+      "Trend monitoring",
+      "Community engagement",
+      "Collaboration opportunities"
+    ],
+    "all_inclusions": [
+      "Daily content creation/posting",
+      "Trend monitoring",
+      "Community engagement",
+      "Collaboration opportunities",
+      "Monthly analytics"
+    ],
+    "url": "inquiry.html?service=TikTok+Content+%26+Management&plan=Complete+TikTok+Management&price=%24650+%2Fmo",
+    "source_page": "service-tiktok.html"
+  },
+  {
+    "id": "plan-websites-1",
+    "detail": "details-plan-websites-1.html",
+    "title": "Standard Website Development",
+    "price": "$500–$600 /project",
+    "service": "Website Design & Development",
+    "summary": [
+      "Responsive website",
+      "Client branding/content",
+      "Clear navigation and contact form/social integrations",
+      "Publishing on client hosting"
+    ],
+    "all_inclusions": [
+      "Responsive website",
+      "Client branding/content",
+      "Clear navigation and contact form/social integrations",
+      "Publishing on client hosting"
+    ],
+    "url": "inquiry.html?service=Website+Design+%26+Development&plan=Standard+Website+Development&price=%24500%E2%80%93%24600+%2Fproject",
+    "source_page": "service-websites.html"
+  },
+  {
+    "id": "plan-websites-2",
+    "detail": "details-plan-websites-2.html",
+    "title": "Advanced Website Development",
+    "price": "From $1,500 /project",
+    "service": "Website Design & Development",
+    "summary": [
+      "Custom workflows",
+      "Dashboards/portals/bookings/directories",
+      "Integrations and automation",
+      "Advanced features"
+    ],
+    "all_inclusions": [
+      "Custom workflows",
+      "Dashboards/portals/bookings/directories",
+      "Integrations and automation",
+      "Advanced features"
+    ],
+    "url": "inquiry.html?service=Website+Design+%26+Development&plan=Advanced+Website+Development&price=From+%241%2C500+%2Fproject",
+    "source_page": "service-websites.html"
+  },
+  {
+    "id": "plan-x-1",
+    "detail": "details-plan-x-1.html",
+    "title": "X Monetization Program",
+    "price": "$300 /mo",
+    "service": "X Growth & Monetization",
+    "summary": [
+      "Account analysis",
+      "Personalized strategy/workflow",
+      "Daily original trend-led posting",
+      "Organic relationships/verified follower efforts"
+    ],
+    "all_inclusions": [
+      "Account analysis",
+      "Personalized strategy/workflow",
+      "Daily original trend-led posting",
+      "Organic relationships/verified follower efforts",
+      "Qualified impression goal monitoring and ongoing adjustments"
+    ],
+    "url": "inquiry.html?service=X+Growth+%26+Monetization&plan=X+Monetization+Program&price=%24300+%2Fmo",
+    "source_page": "service-x.html"
+  },
+  {
+    "id": "plan-x-2",
+    "detail": "details-plan-x-2.html",
+    "title": "X Basic Growth",
+    "price": "$350 /mo",
+    "service": "X Growth & Monetization",
+    "summary": [
+      "Targeted connection building",
+      "Content strategy review"
+    ],
+    "all_inclusions": [
+      "Targeted connection building",
+      "Content strategy review"
+    ],
+    "url": "inquiry.html?service=X+Growth+%26+Monetization&plan=X+Basic+Growth&price=%24350+%2Fmo",
+    "source_page": "service-x.html"
+  },
+  {
+    "id": "plan-x-3",
+    "detail": "details-plan-x-3.html",
+    "title": "X Pro Growth",
+    "price": "$600 /mo",
+    "service": "X Growth & Monetization",
+    "summary": [
+      "Targeted connection building",
+      "Weekly performance report",
+      "Priority support"
+    ],
+    "all_inclusions": [
+      "Targeted connection building",
+      "Weekly performance report",
+      "Priority support"
+    ],
+    "url": "inquiry.html?service=X+Growth+%26+Monetization&plan=X+Pro+Growth&price=%24600+%2Fmo",
+    "source_page": "service-x.html"
+  },
+  {
+    "id": "plan-x-4",
+    "detail": "details-plan-x-4.html",
+    "title": "Creator & Organizational Growth",
+    "price": "$1,200 /mo",
+    "service": "X Growth & Monetization",
+    "summary": [
+      "Connection building",
+      "Direct strategy access",
+      "Crisis management",
+      "Subscriptions support"
+    ],
+    "all_inclusions": [
+      "Connection building",
+      "Direct strategy access",
+      "Crisis management",
+      "Subscriptions support",
+      "Full X account management"
+    ],
+    "url": "inquiry.html?service=X+Growth+%26+Monetization&plan=Creator+%26+Organizational+Growth&price=%241%2C200+%2Fmo",
+    "source_page": "service-x.html"
+  },
+  {
+    "id": "plan-youtube-1",
+    "detail": "details-plan-youtube-1.html",
+    "title": "YouTube Monetization",
+    "price": "$300 /mo",
+    "service": "YouTube Channel Management",
+    "summary": [
+      "Growth strategy",
+      "Video promotion campaigns",
+      "Collaboration coordination",
+      "Engagement optimization"
+    ],
+    "all_inclusions": [
+      "Growth strategy",
+      "Video promotion campaigns",
+      "Collaboration coordination",
+      "Engagement optimization",
+      "Watch-time growth efforts"
+    ],
+    "url": "inquiry.html?service=YouTube+Channel+Management&plan=YouTube+Monetization&price=%24300+%2Fmo",
+    "source_page": "service-youtube.html"
+  },
+  {
+    "id": "plan-youtube-2",
+    "detail": "details-plan-youtube-2.html",
+    "title": "Complete Channel Management",
+    "price": "$700 /mo",
+    "service": "YouTube Channel Management",
+    "summary": [
+      "Complete video production",
+      "Channel strategy/planning",
+      "Community management",
+      "Analytics/reporting"
+    ],
+    "all_inclusions": [
+      "Complete video production",
+      "Channel strategy/planning",
+      "Community management",
+      "Analytics/reporting",
+      "Monetization optimization"
+    ],
+    "url": "inquiry.html?service=YouTube+Channel+Management&plan=Complete+Channel+Management&price=%24700+%2Fmo",
+    "source_page": "service-youtube.html"
+  }
+]

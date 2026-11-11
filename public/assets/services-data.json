@@ -1,0 +1,342 @@
+{
+  "creator": {
+    "title": "Content Creators & Public Figures",
+    "label": "CREATOR MANAGEMENT",
+    "original": "creator",
+    "overview": "For creators, journalists, public figures and independent professionals, this service organizes your presence across selected platforms while keeping your own voice at the center. The work combines account positioning, practical content planning, post preparation, publishing coordination and audience development, with each activity defined by the selected plan.",
+    "included": [
+      "Social profile positioning and account presentation",
+      "Content pillars, topic selection and monthly publishing direction",
+      "Captions, hooks, scheduling and approved post publishing",
+      "Short-form video and Reel adaptation from available content",
+      "Relevant professional connections and audience engagement",
+      "Performance reviews, platform insights and proposed improvements",
+      "Cross-platform identity consistency where covered by the plan"
+    ],
+    "strategy": "Planning considers the creator’s niche, audience interests, existing account performance and preferred content formats. The selected package defines which channels, videos, posts, approvals and reporting commitments are included.",
+    "focus": [
+      "Audience & niche",
+      "Content pillars",
+      "Hooks & captions",
+      "Publishing calendar",
+      "Account ownership",
+      "Platform analytics"
+    ],
+    "plans": [
+      [
+        "Creator Foundation",
+        "$500 / month"
+      ],
+      [
+        "Creator Growth Ecosystem",
+        "$1,000 / month"
+      ],
+      [
+        "Complete Creator Management",
+        "$1,500 / month"
+      ]
+    ]
+  },
+  "organizations": {
+    "title": "Organizations",
+    "label": "ORGANIZATION MANAGEMENT",
+    "original": "organizations",
+    "overview": "For organizations, professional teams and institutions, social media needs coordinated messaging, predictable approvals and consistent public communication. This service brings content planning, channel management, stakeholder-facing posts and reporting into one accountable workflow, while respecting the organization’s decision-making structure.",
+    "included": [
+      "Organizational brand and audience assessment",
+      "Social media content themes and communication calendar",
+      "Coordination of official account publishing",
+      "Stakeholder-facing content and information updates",
+      "Defined review and approval roles",
+      "Campaign and event communication where agreed",
+      "Periodic activity and performance reporting"
+    ],
+    "strategy": "Planning starts from the organization’s communication objectives, stakeholder groups, responsible approvers and sensitivities. Each channel is adapted to its intended audience, while the organization retains approval authority.",
+    "focus": [
+      "Stakeholder audiences",
+      "Approval authority",
+      "Official messaging",
+      "Content calendar",
+      "Brand governance",
+      "Report visibility"
+    ],
+    "plans": [
+      [
+        "Organization Social Management",
+        "Custom quote"
+      ]
+    ]
+  },
+  "brands": {
+    "title": "Brands",
+    "label": "BRAND MANAGEMENT",
+    "original": "brands",
+    "overview": "Brand social media management connects positioning, brand voice, content consistency and performance awareness. We coordinate planned publishing and audience development, with optional paid social planning in the relevant package, so customers encounter a recognizable brand across selected channels.",
+    "included": [
+      "Brand voice and profile alignment",
+      "Monthly content strategy and publishing calendar",
+      "Branded creative adaptations and captions from client materials",
+      "Scheduling and organic audience-development support",
+      "Engagement guidance within agreed scope",
+      "Paid social planning and campaign management in eligible plans",
+      "Performance reporting and content recommendations"
+    ],
+    "strategy": "The content direction reflects the brand’s products, customer groups, visual identity and campaign priorities. Organic and paid activity are treated separately where required; ad spend and third-party costs are agreed outside the management fee.",
+    "focus": [
+      "Brand messaging",
+      "Customer segments",
+      "Content themes",
+      "Organic vs. paid",
+      "Creative consistency",
+      "Reporting"
+    ],
+    "plans": [
+      [
+        "Brand Social Management",
+        "$600 / month"
+      ],
+      [
+        "Brand Growth & Marketing",
+        "$1,500 / month"
+      ]
+    ]
+  },
+  "x": {
+    "title": "X Growth & Monetization",
+    "label": "X PLATFORM SERVICES",
+    "original": "x",
+    "overview": "X support combines original posting, professional connections, account positioning and monetization-readiness assistance. The service is designed to improve the quality and consistency of your presence while keeping platform eligibility and revenue decisions separate from work the agency can actually control.",
+    "included": [
+      "Account analysis and profile positioning",
+      "Original content and publishing direction",
+      "Relevant audience and professional relationship development",
+      "Trend and conversation research",
+      "Posting and interaction support by package",
+      "Monetization-readiness guidance where relevant",
+      "Qualified performance indicators and periodic review"
+    ],
+    "strategy": "Your approach is shaped by account history, the topics you cover, the audience you need and the platform’s current published policies. Monetization eligibility, impression counts and program approval are platform decisions, not guaranteed service results.",
+    "focus": [
+      "X profile audit",
+      "Topic positioning",
+      "Conversation quality",
+      "Relevant network",
+      "Posting rhythm",
+      "Eligibility signals"
+    ],
+    "plans": [
+      [
+        "X Monetization Program",
+        "$300 / month"
+      ],
+      [
+        "X Basic Growth",
+        "$350 / month"
+      ],
+      [
+        "X Pro Growth",
+        "See original terms"
+      ]
+    ]
+  },
+  "instagram": {
+    "title": "Instagram Content & Reels",
+    "label": "INSTAGRAM SERVICES",
+    "original": "instagram",
+    "overview": "Instagram service focuses on visible, consistent content suited to the profile’s audience. Depending on the selected package, it may cover Reels, post design, captions, publishing, community responses and performance review, ensuring that visual content supports the account’s actual identity.",
+    "included": [
+      "Instagram account positioning and content direction",
+      "Reel concepts, hooks and creative planning",
+      "Reels editing or production as included in the plan",
+      "Captions, hashtags and trend research",
+      "Feed consistency, posting and scheduling",
+      "Community replies under full-management scope",
+      "Monthly performance reporting and refinements"
+    ],
+    "strategy": "Planning considers the audience, profile goals, recurring topics, Reel formats, content sources and realistic production capacity. Package-specific quantities, including Reel counts, are shown in the original package terms.",
+    "focus": [
+      "Reel storytelling",
+      "Content pillars",
+      "Hooks & captions",
+      "Visual consistency",
+      "Posting rhythm",
+      "Insights"
+    ],
+    "plans": [
+      [
+        "Reels Growth Package",
+        "$350 / month"
+      ],
+      [
+        "Full Account Management",
+        "$500 / month"
+      ]
+    ]
+  },
+  "facebook": {
+    "title": "Facebook Growth & Monetization",
+    "label": "FACEBOOK SERVICES",
+    "original": "facebook",
+    "overview": "Facebook services cover the organized handling of a business or creator page, with publishing support and a separate monetization-oriented service where appropriate. The focus is on clear page presentation, consistent updates, audience-facing content and evidence-based review.",
+    "included": [
+      "Page posting and content coordination",
+      "Post formatting, captions and scheduling",
+      "Creative direction for audience-facing updates",
+      "Page structure and profile upkeep",
+      "Basic performance tracking",
+      "Monetization-oriented content planning in the relevant package",
+      "Monthly coordination and improvement guidance"
+    ],
+    "strategy": "Page goals, available content, permissions and the selected support tier determine the plan. Eligibility for monetization programs and any revenue payment remain decisions made by Meta.",
+    "focus": [
+      "Page setup",
+      "Post planning",
+      "Content formatting",
+      "Audience engagement",
+      "Monetization awareness",
+      "Performance checkpoints"
+    ],
+    "plans": [
+      [
+        "Facebook Publishing Support",
+        "$350 / month"
+      ],
+      [
+        "Facebook Monetization Support",
+        "$350 / month"
+      ]
+    ]
+  },
+  "youtube": {
+    "title": "YouTube Channel Management",
+    "label": "YOUTUBE SERVICES",
+    "original": "youtube",
+    "overview": "YouTube support helps organize channel direction, uploads, promotion and discoverability around the video content available. The more comprehensive package adds production and continuing channel management. Performance reporting is used to inform decisions about content, not to promise subscriber counts or earnings.",
+    "included": [
+      "Channel positioning and growth strategy",
+      "Video title, description and publishing direction",
+      "Channel uploads and calendar planning",
+      "Promotion and collaboration coordination where included",
+      "Community and engagement support where included",
+      "Watch-time and discoverability analysis",
+      "Channel analytics and monetization-readiness guidance"
+    ],
+    "strategy": "Planning starts with your audience, available videos, production resources and channel performance. We distinguish between agency-controlled improvements and YouTube-controlled decisions about recommendations and monetization.",
+    "focus": [
+      "Channel identity",
+      "Topics & formats",
+      "Upload rhythm",
+      "Metadata & discoverability",
+      "Engagement",
+      "Analytics"
+    ],
+    "plans": [
+      [
+        "YouTube Monetization",
+        "$300 / month"
+      ],
+      [
+        "Complete Channel Management",
+        "$700 / month"
+      ]
+    ]
+  },
+  "tiktok": {
+    "title": "TikTok Content & Management",
+    "label": "TIKTOK SERVICES",
+    "original": "tiktok",
+    "overview": "TikTok services help translate a niche or brand message into short-form formats suited to the platform. The strategy package focuses on scripts and content direction, while complete management extends to production, publishing, community activity and results review.",
+    "included": [
+      "Short-form content concepts and script planning",
+      "Relevant trend and sound research",
+      "Caption and hashtag direction",
+      "Publishing schedule optimization",
+      "Video creative support based on the package",
+      "Community engagement in the management tier",
+      "Regular performance analysis and recommendations"
+    ],
+    "strategy": "Planning is adapted to audience viewing behavior, topic suitability, available content and platform-native creative conventions. No package guarantees virality, reach or a specific follower increase.",
+    "focus": [
+      "Creator niche",
+      "Short-form hooks",
+      "Script concepts",
+      "Platform trends",
+      "Publication cadence",
+      "Retention signals"
+    ],
+    "plans": [
+      [
+        "Viral Content Strategy",
+        "$400 / month"
+      ],
+      [
+        "Complete TikTok Management",
+        "$650 / month"
+      ]
+    ]
+  },
+  "websites": {
+    "title": "Website Design & Development",
+    "label": "WEBSITE SERVICES",
+    "original": "websites",
+    "overview": "Our website services support creators, businesses and organizations that need a clear digital home for their work. We define the required pages, content and functionality, then build a responsive website with straightforward navigation and an agreed handover to client-controlled hosting.",
+    "included": [
+      "Requirements review and website structure",
+      "Mobile and desktop responsive layouts",
+      "Brand typography, colors and approved content",
+      "Navigation and inquiry/contact pathways",
+      "Social account integrations where relevant",
+      "Development, review and agreed changes",
+      "Client-controlled deployment and documented handover"
+    ],
+    "strategy": "The planned website follows the client’s real business goals and available content. Advanced dashboards, bookings, custom integrations and additional features are quoted separately when not included in the selected scope.",
+    "focus": [
+      "Purpose & audience",
+      "Pages & content",
+      "Visual identity",
+      "Mobile usability",
+      "Contact paths",
+      "Ownership & handoff"
+    ],
+    "plans": [
+      [
+        "Standard Website Development",
+        "$500–$600 / project"
+      ],
+      [
+        "Advanced Website Development",
+        "From $1,500 / project"
+      ]
+    ]
+  },
+  "intelligence": {
+    "title": "Custom Social Intelligence",
+    "label": "RESEARCH SERVICES",
+    "original": "intelligence",
+    "overview": "Custom Social Intelligence organizes lawful public online information into useful research on audience conversations, relevant companies, themes and potential opportunities. It is a defined research service rather than a promise of private data access, direct sales or guaranteed leads.",
+    "included": [
+      "Public social conversation and topic research",
+      "Relevant market and competitor signal review",
+      "Public company and audience interest mapping",
+      "Keyword, trend and opportunity discovery",
+      "Structured findings and summaries",
+      "Research interpretation for business decisions",
+      "Clear scope and confidentiality boundaries"
+    ],
+    "strategy": "Every research project begins with a target question and agreed public sources. Results depend on available public information, and private information or restricted-access data are outside the service.",
+    "focus": [
+      "Research question",
+      "Public sources",
+      "Market signals",
+      "Competitor context",
+      "Opportunity themes",
+      "Actionable summary"
+    ],
+    "plans": [
+      [
+        "Custom Social Intelligence",
+        "Custom quote"
+      ]
+    ]
+  }
+}

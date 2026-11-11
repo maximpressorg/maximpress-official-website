@@ -1,0 +1,1 @@
+/* Authentication UI is intentionally disabled for this static release. */

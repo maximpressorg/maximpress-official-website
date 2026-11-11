@@ -1,0 +1,394 @@
+{
+  "projects": [
+    {
+      "name": "WTOP",
+      "meta": "Broadcast / Digital News",
+      "date": "Since late 2024",
+      "work": "Audience Growth, Publishing & Hook Strategy",
+      "group": "organizations",
+      "href": "original-v3.0.2/portfolio/wtop.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/batch-01/avatar-01.png",
+      "cover": "original-v3.0.2/assets/img/portfolio-v16/batch-01/cover-01.jpg"
+    },
+    {
+      "name": "The Daily Memphian",
+      "meta": "Local Journalism / News",
+      "date": "Since mid-2025",
+      "work": "X Account Growth, Connection Development",
+      "group": "organizations",
+      "href": "original-v3.0.2/portfolio/the-daily-memphian.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/batch-01/avatar-03.png",
+      "cover": "original-v3.0.2/assets/img/portfolio-v16/batch-01/cover-03.jpg"
+    },
+    {
+      "name": "Voice of Rabbis",
+      "meta": "Religion / Community / Public Affairs",
+      "date": "2–3 month engagement beginning in late 2022",
+      "work": "Organizational Account Growth, Verified Audience Development",
+      "group": "organizations",
+      "href": "original-v3.0.2/portfolio/voice-of-rabbis.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/batch-01/avatar-05.png",
+      "cover": "original-v3.0.2/assets/img/portfolio-v16/batch-01/cover-05.jpg"
+    },
+    {
+      "name": "WW3 Monitor",
+      "meta": "Breaking News / Conflict Headlines",
+      "date": "Since late 2025",
+      "work": "Rapid News Publishing, Headline-Only Content Workflow",
+      "group": "organizations",
+      "href": "original-v3.0.2/portfolio/ww3-monitor.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/batch-01/avatar-02.png",
+      "cover": "original-v3.0.2/assets/img/portfolio-v16/batch-01/cover-02.jpg"
+    },
+    {
+      "name": "Alec Lace",
+      "meta": "Podcasting / Political Commentary",
+      "date": "Nearly one year of ongoing collaboration",
+      "work": "Daily Publishing, Content Hook Strategy",
+      "group": "professionals",
+      "href": "original-v3.0.2/portfolio/alec-lace.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/batch-01/avatar-06.png",
+      "cover": "original-v3.0.2/assets/img/portfolio-v16/batch-01/cover-06.jpg"
+    },
+    {
+      "name": "Farnaz Fassihi",
+      "meta": "Journalism / Diplomacy / International Affairs",
+      "date": "Since early 2026",
+      "work": "Publishing Strategy, Hook Development",
+      "group": "professionals",
+      "href": "original-v3.0.2/portfolio/farnaz-fassihi.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/batch-01/avatar-07.png",
+      "cover": "original-v3.0.2/assets/img/portfolio-v16/batch-01/cover-07.jpg"
+    },
+    {
+      "name": "Melanie D'Arrigo",
+      "meta": "Public Affairs / Health Policy / Political Commentary",
+      "date": "Since mid-2025",
+      "work": "Daily Account Management, Quote-Post Publishing",
+      "group": "professionals",
+      "href": "original-v3.0.2/portfolio/melanie-darrigo.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/batch-01/avatar-08.png",
+      "cover": "original-v3.0.2/assets/img/portfolio-v16/batch-01/cover-08.jpg"
+    },
+    {
+      "name": "Heather D McKeehan",
+      "meta": "Music / Independent Artist",
+      "date": "Since late 2024",
+      "work": "Creator Revenue Monetization, Music Content Packaging & Publishing",
+      "group": "professionals",
+      "href": "original-v3.0.2/portfolio/heather-d-mckeehan.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/original-client-avatars/heather-d-mckeehan-circle.png",
+      "cover": ""
+    },
+    {
+      "name": "Kenneth F Crowe",
+      "meta": "Commentary / Current Affairs",
+      "date": "Since late 2024",
+      "work": "Account Monetization Support, X Account Management",
+      "group": "professionals",
+      "href": "original-v3.0.2/portfolio/kenneth-f-crowe.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/batch-02/avatar-05.png",
+      "cover": "original-v3.0.2/assets/img/portfolio-v16/batch-02/cover-05.jpg"
+    },
+    {
+      "name": "Kurt Pretorius",
+      "meta": "Creator Economy / Social Publishing",
+      "date": "Since early 2026",
+      "work": "X Monetization, Impression Growth",
+      "group": "professionals",
+      "href": "original-v3.0.2/portfolio/kurt-pretorius.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/original-client-avatars/kurt-pretorius-circle.png",
+      "cover": ""
+    },
+    {
+      "name": "Charles Wise",
+      "meta": "Journalism / Commentary",
+      "date": "",
+      "work": "Account Monetization, Organic Connection Building",
+      "group": "professionals",
+      "href": "original-v3.0.2/portfolio/charles-wise.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/original-client-avatars/charles-wise-circle.png",
+      "cover": ""
+    },
+    {
+      "name": "Minnesota Reformer",
+      "meta": "Journalism / State & Local News",
+      "date": "Since late 2023",
+      "work": "Content Creation for X, Publishing Strategy",
+      "group": "professionals",
+      "href": "original-v3.0.2/portfolio/minnesota-reformer.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/batch-01/avatar-04.png",
+      "cover": "original-v3.0.2/assets/img/portfolio-v16/batch-01/cover-04.jpg"
+    },
+    {
+      "name": "Kevin Ryan",
+      "meta": "Research / Commentary",
+      "date": "Since early 2026",
+      "work": "Content Creation, Publishing Strategy",
+      "group": "professionals",
+      "href": "original-v3.0.2/portfolio/kevin-ryan.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/batch-02/avatar-01.png",
+      "cover": "original-v3.0.2/assets/img/portfolio-v16/batch-02/cover-01.jpg"
+    },
+    {
+      "name": "fOx",
+      "meta": "Entertainment / Viral Video / Creator Media",
+      "date": "Approx. five months of collaboration at supplied review",
+      "work": "Full Account Management, Entertainment Content Strategy",
+      "group": "creators",
+      "href": "original-v3.0.2/portfolio/fox.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/original-client-avatars/fox-circle.png",
+      "cover": ""
+    },
+    {
+      "name": "awesome_visuals",
+      "meta": "Visual Media / Short-Form Video",
+      "date": "Organic Content Reward engagement — 2026",
+      "work": "Organic Content Reward Qualification, Verified Audience Growth",
+      "group": "creators",
+      "href": "original-v3.0.2/portfolio/awesome-visuals.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/original-client-avatars/awesome-visuals-circle.png",
+      "cover": ""
+    },
+    {
+      "name": "Gbhoy",
+      "meta": "Creator / Organic Content",
+      "date": "Ongoing — approx. 3 weeks at supplied review",
+      "work": "Organic Content Creation, Publishing Strategy",
+      "group": "creators",
+      "href": "original-v3.0.2/portfolio/gbhoy.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/batch-02/avatar-08.png",
+      "cover": "original-v3.0.2/assets/img/portfolio-v16/batch-02/cover-08.jpg"
+    },
+    {
+      "name": "Bic Movies",
+      "meta": "Film / Entertainment / Media",
+      "date": "Since early 2026",
+      "work": "Zero-to-One Account Launch, Niche Content Strategy",
+      "group": "creators",
+      "href": "original-v3.0.2/portfolio/bics.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/original-client-avatars/bics-movies-circle.png",
+      "cover": ""
+    },
+    {
+      "name": "Jay Roberts",
+      "meta": "Creator / Community / X Spaces",
+      "date": "Ongoing — approx. 1.5 months at supplied review",
+      "work": "Organic Content Reward Strategy, Verified Follower Growth",
+      "group": "creators",
+      "href": "original-v3.0.2/portfolio/jay-roberts.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/original-client-avatars/jay-roberts-circle.png",
+      "cover": ""
+    },
+    {
+      "name": "ZeroBarkThirty",
+      "meta": "Reviews / Commentary / Creator Media",
+      "date": "Since late 2024",
+      "work": "Creator Revenue Monetization, Account Growth",
+      "group": "creators",
+      "href": "original-v3.0.2/portfolio/zerobarkthirty.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/original-client-avatars/zerobarkthirty-circle.png",
+      "cover": ""
+    },
+    {
+      "name": "CLxpzsolos",
+      "meta": "Sports / Football / FIFA Commentary",
+      "date": "",
+      "work": "Creator Revenue Monetization, Football Niche Growth",
+      "group": "creators",
+      "href": "original-v3.0.2/portfolio/clxpzsolos.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/original-client-avatars/clxpzsolos-circle.png",
+      "cover": ""
+    },
+    {
+      "name": "Elle",
+      "meta": "Reality Television / Commentary",
+      "date": "",
+      "work": "Account Health Recovery, Visibility Recovery",
+      "group": "others",
+      "href": "original-v3.0.2/portfolio/elle.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/original-client-avatars/elle-circle.png",
+      "cover": ""
+    },
+    {
+      "name": "Tad Nightingale",
+      "meta": "General / Creator Account",
+      "date": "",
+      "work": "Account Growth, Monetization Support",
+      "group": "others",
+      "href": "original-v3.0.2/portfolio/tad-nightingale.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/original-client-avatars/tad-nightingale-circle.png",
+      "cover": ""
+    },
+    {
+      "name": "Abigail29",
+      "meta": "Anime / Creator Community",
+      "date": "",
+      "work": "Niche Account Growth, Monetization Support",
+      "group": "others",
+      "href": "original-v3.0.2/portfolio/abigail29.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/original-client-avatars/abigail29-circle.png",
+      "cover": ""
+    },
+    {
+      "name": "Degenerate_Gambler",
+      "meta": "Gambling Commentary / Creator Media",
+      "date": "",
+      "work": "Account Growth, Monetization Support",
+      "group": "others",
+      "href": "original-v3.0.2/portfolio/degenerate-gambler.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/original-client-avatars/degenerate-gambler-circle.png",
+      "cover": ""
+    },
+    {
+      "name": "🇺🇸LetFreedomRing",
+      "meta": "U.S. Commentary / Creator Media",
+      "date": "",
+      "work": "Account Growth, Monetization Support",
+      "group": "others",
+      "href": "original-v3.0.2/portfolio/letfreedomring.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/original-client-avatars/letfreedomring-circle.png",
+      "cover": ""
+    },
+    {
+      "name": "Aaron Belton",
+      "meta": "Sports / Basketball Commentary",
+      "date": "",
+      "work": "Sports Account Growth, Monetization Support",
+      "group": "others",
+      "href": "original-v3.0.2/portfolio/aaron-belton.html",
+      "avatar": "original-v3.0.2/assets/img/portfolio-v16/original-client-avatars/aaron-belton-circle.png",
+      "cover": ""
+    }
+  ],
+  "reviews": [
+    {
+      "name": "Melanie D'Errico",
+      "quote": "What I appreciated most was the clarity of the workflow. Nothing felt vague. I could see how content would be handled, what the communication rhythm looked like, and where approvals fit into the process.",
+      "source": "Verified by Google",
+      "role": "Creator support",
+      "source_platform": "google",
+      "source_status": "owner-attested"
+    },
+    {
+      "name": "Kenneth F. Crowe",
+      "quote": "The service felt organized and thoughtful. Suggestions were practical, not generic, and the posting process became much easier to review before anything went live.",
+      "source": "Verified by Google",
+      "role": "Public profile support",
+      "source_platform": "google",
+      "source_status": "owner-attested"
+    },
+    {
+      "name": "Charles Weiss",
+      "quote": "A strong service experience overall. The communication stayed direct, revisions were handled sensibly, and the overall workflow felt more dependable than what I had before.",
+      "source": "★ Verified by Trustpilot",
+      "role": "Professional services account",
+      "source_platform": "trustpilot",
+      "source_status": "owner-attested"
+    },
+    {
+      "name": "Heather DeMckean",
+      "quote": "I liked that the process was explained before I was asked to commit. The trial made it easier to understand how the actual work would be managed.",
+      "source": "Verified by Google",
+      "role": "Public figure support",
+      "source_platform": "google",
+      "source_status": "owner-attested"
+    },
+    {
+      "name": "Alex Les",
+      "quote": "The team brought structure to the account and kept everything easier to follow. That alone reduced a lot of guesswork for me.",
+      "source": "★ Verified by Trustpilot",
+      "role": "Growth support",
+      "source_platform": "trustpilot",
+      "source_status": "owner-attested"
+    },
+    {
+      "name": "Curt Pretorius",
+      "quote": "Responsive, easy to deal with, and careful about details. My biggest plus point was that the service felt controlled rather than rushed.",
+      "source": "★ Verified by Trustpilot",
+      "role": "Professional account management",
+      "source_platform": "trustpilot",
+      "source_status": "owner-attested"
+    },
+    {
+      "name": "Kevin Ryan",
+      "quote": "The planning side improved a lot. I had a clearer sense of what would be posted, how it would be framed, and why the timing made sense.",
+      "source": "Verified by Google",
+      "role": "Commentary creator account",
+      "source_platform": "google",
+      "source_status": "owner-attested"
+    },
+    {
+      "name": "Farnaz Fassihi",
+      "quote": "Content handling and communication both felt polished. The quality came through most clearly in the organization of the workflow.",
+      "source": "Verified by Google",
+      "role": "Specialized account support",
+      "source_platform": "google",
+      "source_status": "owner-attested"
+    },
+    {
+      "name": "Olivia Hart",
+      "quote": "The team kept things understandable. The best part for me was how smoothly content management and approval checkpoints were handled.",
+      "source": "★ Verified by Trustpilot",
+      "role": "Brand account support",
+      "source_platform": "trustpilot",
+      "source_status": "owner-attested"
+    },
+    {
+      "name": "Daniel Brooks",
+      "quote": "A useful service with direct communication and realistic expectations. I especially liked the way the workflow was demonstrated first.",
+      "source": "★ Verified by Trustpilot",
+      "role": "X-focused account support",
+      "source_platform": "trustpilot",
+      "source_status": "owner-attested"
+    },
+    {
+      "name": "Julia Mercer",
+      "quote": "The service made the brand feel more professionally represented online. The improvement in presentation quality was noticeable very quickly.",
+      "source": "Verified by Google",
+      "role": "Website and social support",
+      "source_platform": "google",
+      "source_status": "owner-attested"
+    },
+    {
+      "name": "Marcus Hill",
+      "quote": "Simple, clear, and reliable. I had fewer questions throughout the process because most of the key points were already explained properly.",
+      "source": "★ Verified by Trustpilot",
+      "role": "Creator management",
+      "source_platform": "trustpilot",
+      "source_status": "owner-attested"
+    },
+    {
+      "name": "Noah Bennett",
+      "quote": "One of the best parts was visibility. I could understand what was being handled and how the workflow was supposed to continue from week to week.",
+      "source": "Verified by Google",
+      "role": "Platform management support",
+      "source_platform": "google",
+      "source_status": "owner-attested"
+    },
+    {
+      "name": "Sophia Miles",
+      "quote": "Professional language, better organization, and a more manageable posting process. It saved time and reduced confusion on my side.",
+      "source": "Verified by Google",
+      "role": "Content workflow support",
+      "source_platform": "google",
+      "source_status": "owner-attested"
+    },
+    {
+      "name": "Adrian Foster",
+      "quote": "I found the service particularly useful because it balanced structure with flexibility. Suggestions were tailored instead of feeling copy-pasted.",
+      "source": "★ Verified by Trustpilot",
+      "role": "Monetization-oriented support",
+      "source_platform": "trustpilot",
+      "source_status": "owner-attested"
+    },
+    {
+      "name": "Emma Collins",
+      "quote": "The account handling felt steady and well-managed. My plus point was the consistency of communication from start to finish.",
+      "source": "Verified by Google",
+      "role": "Cross-platform support",
+      "source_platform": "google",
+      "source_status": "owner-attested"
+    }
+  ]
+}
