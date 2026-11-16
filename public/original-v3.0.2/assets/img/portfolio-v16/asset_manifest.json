@@ -1,0 +1,109 @@
+{
+  "mapped": {
+    "wtop": {
+      "cover": "assets/img/portfolio-v16/batch-01/cover-01.jpg",
+      "avatar": "assets/img/portfolio-v16/batch-01/avatar-01.png",
+      "original": "assets/img/portfolio-v16/batch-01/source-01.png",
+      "source_verified": "mapped from prior user references"
+    },
+    "ww3-monitor": {
+      "cover": "assets/img/portfolio-v16/batch-01/cover-02.jpg",
+      "avatar": "assets/img/portfolio-v16/batch-01/avatar-02.png",
+      "original": "assets/img/portfolio-v16/batch-01/source-02.png",
+      "source_verified": "mapped from prior user references"
+    },
+    "the-daily-memphian": {
+      "cover": "assets/img/portfolio-v16/batch-01/cover-03.jpg",
+      "avatar": "assets/img/portfolio-v16/batch-01/avatar-03.png",
+      "original": "assets/img/portfolio-v16/batch-01/source-03.png",
+      "source_verified": "mapped from prior user references"
+    },
+    "minnesota-reformer": {
+      "cover": "assets/img/portfolio-v16/batch-01/cover-04.jpg",
+      "avatar": "assets/img/portfolio-v16/batch-01/avatar-04.png",
+      "original": "assets/img/portfolio-v16/batch-01/source-04.png",
+      "source_verified": "mapped from prior user references"
+    },
+    "voice-of-rabbis": {
+      "cover": "assets/img/portfolio-v16/batch-01/cover-05.jpg",
+      "avatar": "assets/img/portfolio-v16/batch-01/avatar-05.png",
+      "original": "assets/img/portfolio-v16/batch-01/source-05.png",
+      "source_verified": "mapped from prior user references"
+    },
+    "alec-lace": {
+      "cover": "assets/img/portfolio-v16/batch-01/cover-06.jpg",
+      "avatar": "assets/img/portfolio-v16/batch-01/avatar-06.png",
+      "original": "assets/img/portfolio-v16/batch-01/source-06.png",
+      "source_verified": "mapped from prior user references"
+    },
+    "farnaz-fassihi": {
+      "cover": "assets/img/portfolio-v16/batch-01/cover-07.jpg",
+      "avatar": "assets/img/portfolio-v16/batch-01/avatar-07.png",
+      "original": "assets/img/portfolio-v16/batch-01/source-07.png",
+      "source_verified": "mapped from prior user references"
+    },
+    "melanie-darrigo": {
+      "cover": "assets/img/portfolio-v16/batch-01/cover-08.jpg",
+      "avatar": "assets/img/portfolio-v16/batch-01/avatar-08.png",
+      "original": "assets/img/portfolio-v16/batch-01/source-08.png",
+      "source_verified": "mapped from prior user references"
+    },
+    "kevin-ryan": {
+      "cover": "assets/img/portfolio-v16/batch-02/cover-01.jpg",
+      "avatar": "assets/img/portfolio-v16/batch-02/avatar-01.png",
+      "original": "assets/img/portfolio-v16/batch-02/source-01.png",
+      "source_verified": "visible client label"
+    },
+    "kenneth-f-crowe": {
+      "cover": "assets/img/portfolio-v16/batch-02/cover-05.jpg",
+      "avatar": "assets/img/portfolio-v16/batch-02/avatar-05.png",
+      "original": "assets/img/portfolio-v16/batch-02/source-05.png",
+      "source_verified": "visible client label"
+    },
+    "gbhoy": {
+      "cover": "assets/img/portfolio-v16/batch-02/cover-08.jpg",
+      "avatar": "assets/img/portfolio-v16/batch-02/avatar-08.png",
+      "original": "assets/img/portfolio-v16/batch-02/source-08.png",
+      "source_verified": "visible client label"
+    }
+  },
+  "unmatched": [
+    {
+      "label": "Unidentified \u2014 Rock Bottom",
+      "cover": "assets/img/portfolio-v16/batch-02/cover-02.jpg",
+      "avatar": "assets/img/portfolio-v16/batch-02/avatar-02.png",
+      "original": "assets/img/portfolio-v16/batch-02/source-02.png"
+    },
+    {
+      "label": "Unidentified \u2014 Eagle illustration",
+      "cover": "assets/img/portfolio-v16/batch-02/cover-03.jpg",
+      "avatar": "assets/img/portfolio-v16/batch-02/avatar-03.png",
+      "original": "assets/img/portfolio-v16/batch-02/source-03.png"
+    },
+    {
+      "label": "Unidentified \u2014 Cat avatar",
+      "cover": "assets/img/portfolio-v16/batch-02/cover-04.jpg",
+      "avatar": "assets/img/portfolio-v16/batch-02/avatar-04.png",
+      "original": "assets/img/portfolio-v16/batch-02/source-04.png"
+    },
+    {
+      "label": "Unidentified \u2014 military group",
+      "cover": "assets/img/portfolio-v16/batch-02/cover-06.jpg",
+      "avatar": "assets/img/portfolio-v16/batch-02/avatar-06.png",
+      "original": "assets/img/portfolio-v16/batch-02/source-06.png"
+    },
+    {
+      "label": "Unidentified \u2014 protest crowd",
+      "cover": "assets/img/portfolio-v16/batch-02/cover-07.jpg",
+      "avatar": "assets/img/portfolio-v16/batch-02/avatar-07.png",
+      "original": "assets/img/portfolio-v16/batch-02/source-07.png"
+    },
+    {
+      "label": "Patriot Warriors cover (client match pending)",
+      "cover": "assets/img/portfolio-v16/reference/final-profile-cover.jpg",
+      "avatar": "assets/img/portfolio-v16/reference/final-profile-avatar.png",
+      "original": "assets/img/portfolio-v16/reference/final-profile-source.png"
+    }
+  ],
+  "important": "Reconstructed banner areas under original screenshot avatars are approximation, not exact original pixels. Original screenshots preserved."
+}
