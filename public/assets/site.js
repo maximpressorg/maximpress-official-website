@@ -179,22 +179,21 @@ if(vids.length && 'IntersectionObserver' in window){
   // Six requested clips: two retained from V5, four new uploads. No duplicate originals.
   // Original V5 media are preserved outside the gallery, and the new source masters are untouched.
   const clips=[
-   {src:'assets/video/user-originals/gemini_generated_video_48d8b0a1.mp4',poster:'assets/images/format-1-poster.jpg',mode:'allow-bars',name:'Creator speaking in mustard top'},
-   {src:'assets/video/user-originals/creator-interview-clean.mp4',poster:'assets/images/format-2-poster.jpg',mode:'fill',name:'Creator interview reference'},
-   {src:'assets/video/user-originals/VID_023418_Clean_Instagram_Label.mp4',poster:'assets/images/format-3-poster.jpg',mode:'fill',name:'New social media video reference'},
-   {src:'assets/video/user-originals/creator-story-clean.mp4',poster:'assets/images/format-4-poster.jpg',mode:'fill',name:'Creator storytelling reference'},
-   {src:'assets/video/user-originals/creator-ad.mp4',poster:'assets/images/format-5-poster.jpg',mode:'fill',name:'Creator marketing video reference'},
-   {src:'assets/video/user-originals/VID_023424_Clean_Instagram_Label.mp4',poster:'assets/images/format-6-poster.jpg',mode:'fill',name:'New short-form video reference'}
+    {src:'assets/video/user-originals/gemini_generated_video_48d8b0a1.mp4',mode:'allow-bars',name:'Creator speaking in mustard top'},
+    {src:'assets/video/user-originals/creator-interview-clean.mp4',mode:'fill',name:'Creator interview reference'},
+    {src:'assets/video/user-originals/VID_023418_Clean_Instagram_Label.mp4',mode:'fill',name:'New social media video reference'},
+    {src:'assets/video/user-originals/creator-story-clean.mp4',mode:'fill',name:'Creator storytelling reference'},
+    {src:'assets/video/user-originals/creator-ad.mp4',mode:'fill',name:'Creator marketing video reference'},
+    {src:'assets/video/user-originals/VID_023424_Clean_Instagram_Label.mp4',mode:'fill',name:'New short-form video reference'}
   ];
   const createGroup=(copy)=>{
    const group=document.createElement('div');group.className='video-group';
    if(copy)group.setAttribute('aria-hidden','true');
    clips.forEach((clip)=>{
     const tile=document.createElement('div');tile.className='video-tile '+clip.mode;
-    if(clip.poster)tile.style.setProperty('--video-backdrop',`url("${clip.poster}")`);
     const vid=document.createElement('video');
-    vid.dataset.src=clip.src;vid.poster=clip.poster;vid.autoplay=true;vid.loop=true;vid.muted=true;vid.playsInline=true;
-    vid.preload='none';vid.disablePictureInPicture=true;
+     vid.src=clip.src;vid.autoplay=true;vid.loop=true;vid.muted=true;vid.playsInline=true;
+     vid.preload='auto';vid.disablePictureInPicture=true;
     vid.setAttribute('aria-label',clip.name);
     if(copy){vid.tabIndex=-1;vid.setAttribute('aria-hidden','true')}
     tile.appendChild(vid);group.appendChild(tile);
@@ -206,15 +205,14 @@ if(vids.length && 'IntersectionObserver' in window){
    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
     const v=entry.target;
     if(document.hidden||!entry.isIntersecting){v.pause();return}
-    if(!v.src&&v.dataset.src){v.src=v.dataset.src;v.load()}
     if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)v.play().catch(()=>{});
-   }),{threshold:0.01,rootMargin:'300px'});
+    }),{threshold:0.01});
    list.querySelectorAll('video').forEach(v=>observer.observe(v));
    document.addEventListener('visibilitychange',()=>list.querySelectorAll('video').forEach(v=>{
     if(document.hidden)v.pause();
     else if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)v.play().catch(()=>{});
    }));
-  }else list.querySelectorAll('video').forEach(v=>{if(!v.src&&v.dataset.src){v.src=v.dataset.src;v.load()}v.play().catch(()=>{})});
+   }else list.querySelectorAll('video').forEach(v=>v.play().catch(()=>{}));
  }
 
 })();
