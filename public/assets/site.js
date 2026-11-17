@@ -106,6 +106,13 @@ document.querySelectorAll('a.plan-card-link').forEach(link=>link.addEventListene
  event.preventDefault();
  window.location.assign(link.href);
 }));
+// Keep package selection reliable in embedded and mobile browsers too. The full
+// inquiry URL carries the selected service, plan and price into the next page.
+document.querySelectorAll('a.plan-choose-v124').forEach(link=>link.addEventListener('click',event=>{
+ if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+ event.preventDefault();
+ window.location.assign(link.href);
+}));
 // Client case study filters; original data, images and names remain unchanged.
 document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{
  const group=b.dataset.filter;
